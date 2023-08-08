@@ -2,25 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>테스트용</title>
+        <title>몬스터컬렉션</title>
         <link rel="stylesheet" href="style.css">
         <script type=""text/javascript" src="moncol.js">
         </script>
         <script type=""text/javascript" src="db.js">
-        </script>
-        <script type=""text/javascript" src=""http://code.jquery.com/jquery-latest.js">
-            $(function(){
-                $.ajax({
-                    url: "UI.NameTag.img.xml",
-                    dataType: "xml",
-                    success: function(result){
-                        $(result.find("dir").each(function(){
-                            console.log($(this).find("dir").text());
-                            console.log("a");
-                        }));
-                    }
-                });
-            });
         </script>
         <style>
         canvas {
