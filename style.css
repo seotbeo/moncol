@@ -17,6 +17,11 @@
   color: #000;
 }
 
+.autocomplete > div:active {
+  background: #bbc0ce;
+  color: #000;
+}
+
 section {
   width: 500px;
   display: inline-block;
