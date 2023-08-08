@@ -72,6 +72,4 @@ const showList = (data, value, nowIndex) => {
 function select(obj)
 {
   $search.value = obj.textContent.trim();
-  nowIndex = 0;
-  matchDataList.length = 0;
 }
