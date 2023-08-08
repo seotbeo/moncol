@@ -8,8 +8,6 @@ function init() {
     const canvas = document.getElementById("preview");
     const ctx = canvas.getContext("2d");
 
-    ctx.font = "12px dotum";
-
     var ui_src = ["resources/ui_none.png", //0
                 "resources/ui_1star.png", //1
                 "resources/ui_2star.png", //2
@@ -86,6 +84,25 @@ function drawMob(index, j, i)
     canvas.setAttribute("image-rendering", "pixelated");
     ctx.drawImage(mobImageList[index], 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
+}
+
+function drawMemo(memo)
+{
+    redraw();
+
+    const canvas = document.getElementById("preview");
+    const ctx = canvas.getContext("2d");
+
+    ctx.font = "17px SeoulNamsan"; //https://www.seoul.go.kr/seoul/font.do
+    ctx.fillStyle = "#eeff00";
+    ctx.textAlign = "right";
+    ctx.letterSpacing = "1px";
+    //ctx.lineWidth = 0.1;
+    ctx.strokeStyle = "#eeff00";
+
+    ctx.fillText(memo, 635, 34, 525);
+    ctx.fillText(memo, 635, 33, 525);
+    //ctx.strokeText(memo, 640, 35, 525);
 }
 
 function addMobToList(mob)
