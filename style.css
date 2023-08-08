@@ -80,6 +80,18 @@ button {
   border: 1px solid #dddddd;
 }
 
+button:hover {
+  background: #ddffdd;
+  color: #333333;
+  border: 1px solid #dddddd;
+}
+
+button:active {
+  background: #ccffcc;
+  color: #333333;
+  border: 1px solid #dddddd;
+}
+
 .bottomarea {
   margin-top: 2rem;
 }
