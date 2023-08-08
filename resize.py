@@ -12,11 +12,11 @@ def round_custom(a):
     else:
         return (a // 1)
     
-fileList = glob.glob("mob2\\*.png")
+fileList = glob.glob("mob\\*.png")
 pat = re.compile(r".+\\(.+)[.][pP][nN][gG]")
 
 try:
-    os.mkdir("mob2\\fix\\")
+    os.mkdir("mob\\fix\\")
 except OSError:
     print ("Creation of the directory %s failed" % path)
     
@@ -43,7 +43,7 @@ for file in fileList:
             imgR.putpixel((j, i), img.getpixel((round_custom(j*rvw),round_custom(i*rvh))))
 
     fileName = pat.search(file).group(1)
-    imgR.save("mob2\\fix\\" + fileName + '_fix.png')
+    imgR.save("mob\\fix\\" + fileName + '_fix.png')
     print(fileName)
     img.close()
     imgR.close()

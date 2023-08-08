@@ -1,0 +1,81 @@
+/* 현재 선택된 검색어 */
+.autocomplete > div.active {
+  background: #e0e5f6;
+  color: #000;
+}
+
+/* -------------------------- */
+
+.autocomplete > div {
+  background: #f1f3f499;
+  padding: .2rem .6rem;
+}
+
+section {
+  width: 500px;
+  display: inline-block;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  word-break: break-all;
+  font-family: Pretendard;
+  text-align: center;
+}
+
+input {
+  width: 500px;
+  height: 3rem;
+  border-radius: 5px;
+  padding: 0rem 1rem;
+  border: 1px solid #e0e5f6;
+  background: #ffffff;
+  margin: 1rem 0rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+input::placeholder {
+  font-size: 1.2rem;
+}
+
+body {
+  background: #ffffff;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+mark {
+  background: #febf0090;
+}
+
+p {
+  opacity: .8;
+  font-size: 15px;
+}
+
+button {
+  width: 50px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #111111;
+}
+
+.bottomarea {
+  margin-top: 2rem;
+}
+
+canvas {
+  border: 0px solid black;
+}

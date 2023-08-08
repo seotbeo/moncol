@@ -1,4 +1,5 @@
 var mobCount = 0;
+var maxCount = 48;
 var mobList = new Array();
 var mobImageList = new Array();
 var ui = new Array();
@@ -74,9 +75,7 @@ function redraw()
 
 function drawMob(index, j, i)
 {
-    console.log(index, j, i);
     var target = mobList[index];
-    console.log(target);
 
     const canvas = document.getElementById("preview");
     const ctx = canvas.getContext("2d");
@@ -85,15 +84,23 @@ function drawMob(index, j, i)
     w = mobImageList[index].width;
     h = mobImageList[index].height;
     canvas.setAttribute("image-rendering", "pixelated");
-    ctx.drawImage(mobImageList[index], 70 - Math.floor(w/2) + j * 74, 91 - Math.floor(h/2) + i * 74, w, h);
+    ctx.drawImage(mobImageList[index], 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
 }
 
-function addMobToList()
+function addMobToList(mob)
 {
-    const textarea = document.getElementById("mobID");
-    var mobID = textarea ? textarea.value : -1
-    var target = db.find(e => e.ID == mobID)
+    if (mobCount === maxCount) return;
+    if (mob)
+    {
+        mobName = mob;
+    }
+    else
+    {
+        const text = document.getElementById("search");
+        var mobName = text ? text.value : null
+    }
+    var target = db.find(e => e.name == mobName)
     if (target)
     {
         mobList.push(target);
@@ -138,6 +145,11 @@ function delMobToList()
     init();
 }
 
-function getColor(clr) {
-    return clr;
+function save()
+{
+    const canvas = document.getElementById("preview");
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL();
+    link.setAttribute("download", "monster_collection");
+    link.click();
 }
