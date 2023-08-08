@@ -10,13 +10,14 @@ const $search = document.querySelector("#search");
 const $autoComplete = document.querySelector(".autocomplete");
 
 let nowIndex = 0;
+let matchDataList;
 
 $search.onkeyup = (event) => {
   // 검색어
   const value = $search.value.trim();
 
   // 자동완성 필터링
-  const matchDataList = value
+  matchDataList = value
     ? searchdb.filter((label) => label.includes(value))
     : [];
   
@@ -60,10 +61,17 @@ const showList = (data, value, nowIndex) => {
   $autoComplete.innerHTML = data
     .map(
       (label, index) => `
-      <div class='${nowIndex === index ? "active" : ""}'>
+      <div class='${nowIndex === index ? "active" : ""}' onclick='select(this);'>
         ${label.replace(regex, "<mark>$1</mark>")}
       </div>
     `
     )
     .join("");
 };
+
+function select(obj)
+{
+  $search.value = obj.textContent.trim();
+  nowIndex = 0;
+  matchDataList.length = 0;
+}

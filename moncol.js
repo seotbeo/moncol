@@ -108,7 +108,7 @@ function addMobToList(mob)
     }
     else return;
     
-
+    document.querySelector("#search").value = "";
     mob = new Image();
     mob.src = target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix");
 
@@ -139,6 +139,8 @@ function addMobToList(mob)
 
 function delMobToList()
 {
+    if (mobCount === 0) return;
+
     mobList.pop();
     mobImageList.pop();
     mobCount--;
@@ -152,4 +154,14 @@ function save()
     link.href = canvas.toDataURL();
     link.setAttribute("download", "monster_collection");
     link.click();
+}
+
+function reset()
+{
+    if (mobCount === 0) return;
+    
+    mobList.length = 0;
+    mobImageList.length = 0;
+    mobCount = 0;
+    redraw();
 }
