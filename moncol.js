@@ -2,6 +2,8 @@ var mobCount = 0;
 var maxCount = 48;
 var mobList = new Array();
 var mobImageList = new Array();
+var greyCheckList = new Array();
+var greyCheck = 0;
 var ui = new Array();
 
 function init() {
@@ -78,11 +80,12 @@ function drawMob(index, j, i)
     const canvas = document.getElementById("preview");
     const ctx = canvas.getContext("2d");
 
-    var w, h;
-    w = mobImageList[index].width;
-    h = mobImageList[index].height;
+    var w, h, v;
+    v = greyCheckList[index];
+    w = mobImageList[index][v].width;
+    h = mobImageList[index][v].height;
     canvas.setAttribute("image-rendering", "pixelated");
-    ctx.drawImage(mobImageList[index], 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
+    ctx.drawImage(mobImageList[index][v], 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
 }
 
@@ -126,31 +129,41 @@ function addMobToList(mob)
     else return;
     
     document.querySelector("#search").value = "";
-    mob = new Image();
-    mob.src = target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix");
+    mob = new Array();
+    mob_src = [target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix")];
+    mob_src.push(mob_src[0].replace("_fix.png", "_fix_grey.png").replace("mob\\fix", "mob\\fix\\grey"));
 
     var loadedCount = 0;
 
     function mobLoaded()
     {
         loadedCount++;
-        if (loadedCount === 1)
+        if (loadedCount === 2)
         {
-            mob.imageSmoothingEnabled = mob.oImageSmoothingEnabled = mob.mozImageSmoothingEnabled = mob.webkitImageSmoothingEnabled = false;
-            mob.setAttribute("image-rendering", "pixelated");
+            for (var i = 0; i < mob_src.length; i++)
+            {
+                mob[i].imageSmoothingEnabled = mob[i].oImageSmoothingEnabled = mob[i].mozImageSmoothingEnabled = mob[i].webkitImageSmoothingEnabled = false;
+                mob[i].setAttribute("image-rendering", "pixelated");
+            }
             mobImageList.push(mob);
+            greyCheckList.push(greyCheck);
             redraw();
         }
     }
 
-    mob.onload = mobLoaded;
-    if (mob.complete)
+    for (var i = 0; i < mob_src.length; i++)
     {
-        mob.onload();
-    }
-    else
-    {
-        mob.onload = mobLoaded;
+        mob[i] = new Image();
+        mob[i].src = mob_src[i];
+        mob[i].onload = mobLoaded;
+        if (mob[i].complete)
+        {
+            mob[i].onload();
+        }
+        else
+        {
+            mob[i].onload = mobLoaded;
+        }
     }
 }
 
@@ -160,6 +173,7 @@ function delMobToList()
 
     mobList.pop();
     mobImageList.pop();
+    greyCheckList.pop();
     mobCount--;
     init();
 }
@@ -179,6 +193,19 @@ function reset()
     
     mobList.length = 0;
     mobImageList.length = 0;
+    greyCheckList.length = 0;
     mobCount = 0;
     redraw();
+}
+
+function checkboxGrey(event)
+{
+    if (event.target.checked) 
+    {
+        greyCheck = 1;
+    }
+    else
+    {
+        greyCheck = 0;
+    }
 }

@@ -56,6 +56,10 @@ input {
   font-size: 1.2rem;
 }
 
+input::placeholder {
+  font-size: 1.2rem;
+}
+
 #memo {
   width: 300px;
   height: 2rem;
@@ -72,8 +76,11 @@ input {
   font-size: 1rem;
 }
 
-input::placeholder {
-  font-size: 1.2rem;
+#grey {
+  width: 20px;
+  margin: 0px 10px 0px 0px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 body {
@@ -81,6 +88,7 @@ body {
   display: inline-block;
   justify-content: center;
   align-items: center;
+  font-size: 0.8rem;
 }
 
 mark {
@@ -99,6 +107,7 @@ button {
   background: #ffffff;
   color: #333333;
   border: 1px solid #dddddd;
+  margin-top: 10px;
 }
 
 button:hover {

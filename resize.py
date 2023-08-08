@@ -15,11 +15,6 @@ def round_custom(a):
 fileList = glob.glob("mob\\*.png")
 pat = re.compile(r".+\\(.+)[.][pP][nN][gG]")
 
-try:
-    os.mkdir("mob\\fix\\")
-except OSError:
-    print ("Creation of the directory %s failed" % path)
-    
 for file in fileList:
     img = Image.open(file).convert("RGBA")
     imgw, imgh = img.size
