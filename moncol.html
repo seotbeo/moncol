@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>테스트용</title>
+        <link rel="stylesheet" href="style.css">
+        <script type=""text/javascript" src="moncol.js">
+        </script>
+        <script type=""text/javascript" src="db.js">
+        </script>
+        <script type=""text/javascript" src=""http://code.jquery.com/jquery-latest.js">
+            $(function(){
+                $.ajax({
+                    url: "UI.NameTag.img.xml",
+                    dataType: "xml",
+                    success: function(result){
+                        $(result.find("dir").each(function(){
+                            console.log($(this).find("dir").text());
+                            console.log("a");
+                        }));
+                    }
+                });
+            });
+        </script>
+        <style>
+        canvas {
+            border: 0px solid black;
+        }
+        </style>
+    </head>
+
+    <body onload="init();">
+        <div style="text-align:center;">
+            <canvas id="preview" width="1" height="1">지원되지 않습니다.</canvas>
+        </div>
+        <div style="text-align:center;">
+            <textarea id="mobID" cols="30" rows="1" autofocus></textarea><br>
+            <button type="button" onclick="addMobToList();">추가</button>
+            <button type="button" onclick="delMobToList();">삭제</button>
+        </div>
+    </body>
+</html>
