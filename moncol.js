@@ -1,5 +1,6 @@
 var mobCount = 0;
-var maxCount = 48;
+var rows = 6;
+var cols = 8;
 var mobList = new Array();
 var mobImageList = new Array();
 var greyCheckList = new Array();
@@ -7,9 +8,6 @@ var greyCheck = 0;
 var ui = new Array();
 
 function init() {
-    const canvas = document.getElementById("preview");
-    const ctx = canvas.getContext("2d");
-
     var ui_src = ["resources/ui_none.png", //0
                 "resources/ui_1star.png", //1
                 "resources/ui_2star.png", //2
@@ -18,7 +16,9 @@ function init() {
                 "resources/ui_5star.png", //5
                 "resources/ui_special.png", //6
                 "resources/ui_event.png", //7
-                "resources/ui_bg.png"]; //8
+                "resources/ui_bg_t.png", //8
+                "resources/ui_bg_c.png", //9
+                "resources/ui_bg_b.png"]; //10:
 
     var loadedCount = 0;
 
@@ -54,14 +54,20 @@ function redraw()
 
     var count = mobCount * 1;
     var index = 0;
+    var bg_c_count = parseInt(rows) - 2;
 
     canvas.width = ui[8].width;
-    canvas.height = ui[8].height;
+    canvas.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
     ctx.drawImage(ui[8], 0, 0);
-
-    for (let i = 0; i < 6; i++)
+    for (let i = 0; i < bg_c_count; i++)
     {
-        for (let j = 0; j < 8; j++)
+        ctx.drawImage(ui[9], 0, ui[8].height + ui[9].height * i);
+    }
+    ctx.drawImage(ui[10], 0, ui[8].height + ui[9].height * bg_c_count);
+
+    for (let i = 0; i < rows; i++)
+    {
+        for (let j = 0; j < cols; j++)
         {
             if (count-- > 0)
             {
@@ -107,7 +113,7 @@ function drawMemo(memo)
 
 function addMobToList(mob)
 {
-    if (mobCount === maxCount) return;
+    if (mobCount === rows * cols) return;
     if (mob)
     {
         mobName = mob;
@@ -205,4 +211,20 @@ function checkboxGrey(event)
     {
         greyCheck = 0;
     }
+}
+
+function setRows(event)
+{
+    rows = event.value;
+    var max = cols * rows;
+
+    if (mobCount > max)
+    {
+        mobCount = max;
+        mobList.length = max;
+        mobImageList.length = max;
+        greyCheckList.length = max;
+    }
+
+    redraw();
 }
