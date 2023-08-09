@@ -19,6 +19,6 @@ for file in fileList:
             img.putpixel((j, i), (v, v, v, int(a * 0.4)))
             
     fileName = pat.search(file).group(1)
-    img.save("mob\\fix\\gray\\" + fileName + '_grey.png')
+    img.save("mob\\fix\\grey\\" + fileName + '_grey.png')
     print(fileName)
     img.close()

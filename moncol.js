@@ -100,12 +100,10 @@ function drawMemo(memo)
     ctx.fillStyle = "#eeff00";
     ctx.textAlign = "right";
     ctx.letterSpacing = "1px";
-    //ctx.lineWidth = 0.1;
     ctx.strokeStyle = "#eeff00";
 
     ctx.fillText(memo, 635, 34, 525);
     ctx.fillText(memo, 635, 33, 525);
-    //ctx.strokeText(memo, 640, 35, 525);
 }
 
 function addMobToList(mob)
@@ -121,12 +119,10 @@ function addMobToList(mob)
         var mobName = text ? text.value : null
     }
     var target = db.find(e => e.name == mobName)
-    if (target)
+    if (!target)
     {
-        mobList.push(target);
-        mobCount++;
+        return;
     }
-    else return;
     
     document.querySelector("#search").value = "";
     mob = new Array();
@@ -145,6 +141,8 @@ function addMobToList(mob)
                 mob[i].imageSmoothingEnabled = mob[i].oImageSmoothingEnabled = mob[i].mozImageSmoothingEnabled = mob[i].webkitImageSmoothingEnabled = false;
                 mob[i].setAttribute("image-rendering", "pixelated");
             }
+            mobCount++;
+            mobList.push(target);
             mobImageList.push(mob);
             greyCheckList.push(greyCheck);
             redraw();
