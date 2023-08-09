@@ -71,6 +71,7 @@ function redraw()
             ctx.drawImage(ui[0], 32 + j * 74, 52 + i * 74);
         }
     }
+    redrawMemo();
 }
 
 function drawMob(index, j, i)
@@ -91,8 +92,6 @@ function drawMob(index, j, i)
 
 function drawMemo(memo)
 {
-    redraw();
-
     const canvas = document.getElementById("preview");
     const ctx = canvas.getContext("2d");
 
