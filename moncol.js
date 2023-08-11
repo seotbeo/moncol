@@ -3,7 +3,7 @@ var rows = 6;
 var cols = 8;
 var ui = new Array();
 var mobList = new Array();
-var greyCheck = 0;
+var greyCheck = false;
 var loadlist_loadCheck = 0;
 
 function Mob(target, img, imgG, grey)
@@ -52,19 +52,52 @@ function init() {
             ui[i].onload = uiLoaded;
         }
     }
+    
+    const canvas = document.getElementById("preview");
+    canvas.addEventListener('click', (event) => {
+        var canvasLeft = canvas.offsetLeft + canvas.clientLeft;
+        var canvasTop = canvas.offsetTop + canvas.clientTop;
+        var x = event.pageX - canvasLeft;
+        var y = event.pageY - canvasTop;
+        var count = 0;
+
+        if (y < canvas.top && y > canvas.top + canvas.height 
+            && x < canvas.left && x > canvas.left + canvas.width)
+        {
+            return;
+        }
+
+        for (let i = 0; i < rows; i++)
+        {
+            for (let j = 0; j < cols; j++)
+            {
+                if (++count > mobCount) return;
+
+                if (y > 54 + i * 74 && y < 124 + i * 74
+                    && x > 34 + j * 74 && x < 104 + j * 74)
+                {
+                    console.log(mobList[j + i * cols].target.name);
+                    mobList[j + i * cols].grey = !(mobList[j + i * cols].grey);
+                    redraw();
+                    return;
+                }
+            }
+        }
+    });
 }
 
 function redraw()
 {
     const canvas = document.getElementById("preview");
+    const canvas2 = document.getElementById("preview");
     const ctx = canvas.getContext("2d");
 
     var count = mobCount * 1;
     var index = 0;
     var bg_c_count = parseInt(rows) - 2;
 
-    canvas.width = ui[8].width;
-    canvas.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
+    canvas.width = canvas2.width = ui[8].width;
+    canvas.height = canvas2.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
     ctx.drawImage(ui[8], 0, 0);
     for (let i = 0; i < bg_c_count; i++)
     {
@@ -99,7 +132,7 @@ function drawMob(index, j, i)
     w = mobList[index].img.width;
     h = mobList[index].img.height;
     canvas.setAttribute("image-rendering", "pixelated");
-    ctx.drawImage(v === 1 ? mobList[index].imgG : mobList[index].img, 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
+    ctx.drawImage(v === true ? mobList[index].imgG : mobList[index].img, 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
 }
 
@@ -206,11 +239,11 @@ function checkboxGrey(event)
 {
     if (event.target.checked) 
     {
-        greyCheck = 1;
+        greyCheck = true;
     }
     else
     {
-        greyCheck = 0;
+        greyCheck = false;
     }
 }
 
@@ -241,7 +274,7 @@ function savelist()
         str += " : ";
         str += mobList[i].target.name;
         str += " / ";
-        str += mobList[i].grey === 1 ? "미등록" : "등록";
+        str += mobList[i].grey === true ? "미등록" : "등록";
         str += "\n";
         outputStr += str;
     }
@@ -303,11 +336,11 @@ function loadlist()
                 var collect = l[1].trim(); //collect
                 if (collect === "미등록")
                 {
-                    var grey = 1;
+                    var grey = true;
                 }
                 else if (collect === "등록")
                 {
-                    var grey = 0;
+                    var grey = false;
                 }
                 else
                 {
