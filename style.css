@@ -28,7 +28,6 @@ section {
   flex-direction: column;
   justify-content: center;
   background: #ffffff;
-  margin-top: 1rem;
   text-align: center;
 }
 
@@ -101,7 +100,7 @@ p {
 }
 
 button {
-  width: 55px;
+  width: 70px;
   height: 35px;
   border-radius: 7px;
   background: #ffffff;

@@ -1,11 +1,18 @@
 var mobCount = 0;
 var rows = 6;
 var cols = 8;
-var mobList = new Array();
-var mobImageList = new Array();
-var greyCheckList = new Array();
-var greyCheck = 0;
 var ui = new Array();
+var mobList = new Array();
+var greyCheck = 0;
+var loadlist_loadCheck = 0;
+
+function Mob(target, img, imgG, grey)
+{
+    this.target = target;
+    this.grey = grey;
+    this.img = img;
+    this.imgG = imgG;
+}
 
 function init() {
     var ui_src = ["resources/ui_none.png", //0
@@ -82,17 +89,17 @@ function redraw()
 
 function drawMob(index, j, i)
 {
-    var target = mobList[index];
+    var target = mobList[index].target;
 
     const canvas = document.getElementById("preview");
     const ctx = canvas.getContext("2d");
 
     var w, h, v;
-    v = greyCheckList[index];
-    w = mobImageList[index][v].width;
-    h = mobImageList[index][v].height;
+    v = mobList[index].grey;
+    w = mobList[index].img.width;
+    h = mobList[index].img.height;
     canvas.setAttribute("image-rendering", "pixelated");
-    ctx.drawImage(mobImageList[index][v], 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
+    ctx.drawImage(v === 1 ? mobList[index].imgG : mobList[index].img, 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
 }
 
@@ -130,8 +137,8 @@ function addMobToList(mob)
     }
     
     document.querySelector("#search").value = "";
-    mob = new Array();
-    mob_src = [target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix")];
+    var mob = new Array();
+    var mob_src = [target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix")];
     mob_src.push(mob_src[0].replace("_fix.png", "_fix_grey.png").replace("mob\\fix", "mob\\fix\\grey"));
 
     var loadedCount = 0;
@@ -146,10 +153,7 @@ function addMobToList(mob)
                 mob[i].imageSmoothingEnabled = mob[i].oImageSmoothingEnabled = mob[i].mozImageSmoothingEnabled = mob[i].webkitImageSmoothingEnabled = false;
                 mob[i].setAttribute("image-rendering", "pixelated");
             }
-            mobCount++;
-            mobList.push(target);
-            mobImageList.push(mob);
-            greyCheckList.push(greyCheck);
+            mobList[mobCount++] = new Mob(target, mob[0], mob[1], greyCheck);
             redraw();
         }
     }
@@ -175,8 +179,6 @@ function delMobToList()
     if (mobCount === 0) return;
 
     mobList.pop();
-    mobImageList.pop();
-    greyCheckList.pop();
     mobCount--;
     init();
 }
@@ -188,6 +190,7 @@ function save()
     link.href = canvas.toDataURL();
     link.setAttribute("download", "monster_collection");
     link.click();
+    URL.revokeObjectURL(link.href);
 }
 
 function reset()
@@ -195,8 +198,6 @@ function reset()
     if (mobCount === 0) return;
     
     mobList.length = 0;
-    mobImageList.length = 0;
-    greyCheckList.length = 0;
     mobCount = 0;
     redraw();
 }
@@ -220,11 +221,154 @@ function setRows(event)
 
     if (mobCount > max)
     {
-        mobCount = max;
         mobList.length = max;
-        mobImageList.length = max;
-        greyCheckList.length = max;
+        mobCount = max;
     }
 
     redraw();
+}
+
+function savelist()
+{
+    if (mobList.length === 0) return;
+
+    var outputStr = "";
+
+    for (let i = 0; i < mobList.length; i++)
+    {
+        var str = "";
+        str += String(i + 1).padStart(3, "0");
+        str += " : ";
+        str += mobList[i].target.name;
+        str += " / ";
+        str += mobList[i].grey === 1 ? "미등록" : "등록";
+        str += "\n";
+        outputStr += str;
+    }
+
+    var d = new Date();
+    var date = String(d.getFullYear()) +
+        String(d.getMonth()).padStart(2, "0") +
+        String(d.getDate()).padStart(2, "0") +
+        "_" +
+        String(d.getHours()).padStart(2, "0") +
+        String(d.getMinutes()).padStart(2, "0") +
+        String(d.getSeconds()).padStart(2, "0");
+
+    const link = document.createElement("a");
+    const file = new Blob([outputStr], { type: 'text/plain' });
+    link.href = URL.createObjectURL(file);
+    link.setAttribute("download", "몬스터컬렉션_" + date);
+    link.click();
+    URL.revokeObjectURL(link.href);
+}
+
+function loadlist()
+{
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".txt";
+    input.click();
+    input.onchange = (event) => {
+        var r = new FileReader();
+        r.readAsText(event.target.files[0],"UTF-8");
+        r.onload = () => {
+            var t = r.result.split('\n', cols * rows);
+            len = t.length; //목록 길이
+            if (len == 0) return;
+
+            loadlist_loadCheck = 0;
+            var loadArray = new Array();
+
+            for (let i = 0; i < len; i++)
+            {
+                var k = t[i].split(':');
+                if  (k.length !== 2) //[(conut), [(name), (collect)]]
+                {
+                    continue;
+                }
+
+                var l = k[1].split("/");
+                if (l.length !== 2) //[(name), (collect)]
+                {
+                    continue;
+                }
+
+                var target = db.find(e => e.name == l[0].trim()) //name
+                if (!target)
+                {
+                    continue;
+                }
+                
+                var collect = l[1].trim(); //collect
+                if (collect === "미등록")
+                {
+                    var grey = 1;
+                }
+                else if (collect === "등록")
+                {
+                    var grey = 0;
+                }
+                else
+                {
+                    continue;
+                }
+                
+                loadArray.push({target: target, grey: grey});
+            }
+            if (loadArray.length === 0) return;
+
+
+            reset();
+            for (let i = 0; i < loadArray.length; i++)
+            {
+                loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
+            }
+        }
+    }
+}
+
+function loadlist_loadMob(index, target, grey, count)
+{
+    var mob = new Array();
+    var mob_src = [target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix")];
+    mob_src.push(mob_src[0].replace("_fix.png", "_fix_grey.png").replace("mob\\fix", "mob\\fix\\grey"));
+
+    var loadedCount = 0;
+
+    function mobLoaded()
+    {
+        loadedCount++;
+        if (loadedCount == 2)
+        {
+            for (var j = 0; j < mob_src.length; j++)
+            {
+                mob[j].imageSmoothingEnabled = mob[j].oImageSmoothingEnabled = mob[j].mozImageSmoothingEnabled = mob[j].webkitImageSmoothingEnabled = false;
+                mob[j].setAttribute("image-rendering", "pixelated");
+            }
+            mobList[index] = new Mob(target, mob[0], mob[1], grey);
+            mobCount++;
+            loadlist_loadCheck++;
+
+            if (loadlist_loadCheck == count)
+            {
+                redraw();
+            }
+        }
+    }
+
+    for (var j = 0; j < mob_src.length; j++)
+    {
+        mob[j] = new Image();
+        mob[j].src = mob_src[j];
+        mob[j].onload = mobLoaded;
+        if (mob[j].complete)
+        {
+            mob[j].onload();
+        }
+        else
+        {
+            mob[j].onload = mobLoaded;
+        }
+    }
 }
