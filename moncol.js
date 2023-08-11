@@ -188,7 +188,6 @@ function save()
     const canvas = document.getElementById("preview");
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
-    link.onclick = destroyClickedElement;
     link.setAttribute("download", "monster_collection");
     link.click();
     URL.revokeObjectURL(link.href);
@@ -260,21 +259,7 @@ function savelist()
     const file = new Blob([outputStr], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
     link.setAttribute("download", "몬스터컬렉션_" + date);
-
-    if (window.webkitURL != null) {
-        link.href = window.webkitURL.createObjectURL(file);
-    } else {
-        link.href = window.URL.createObjectURL(file);
-        link.onclick = destroyClickedElement;
-        link.style.display = "none";
-        document.body.appendChild(link);
-    }
-
-    if (navigator.msSaveBlob) {
-        navigator.msSaveBlob(file, "몬스터컬렉션_" + date);
-    } else {
-        link.click();
-    }
+    link.click();
     URL.revokeObjectURL(link.href);
 }
 
