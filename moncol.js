@@ -232,7 +232,8 @@ function reset()
     
     mobList.length = 0;
     mobCount = 0;
-    redraw();
+    setRowsSelector(6);
+    setRows(6);
 }
 
 function checkboxGrey(event)
@@ -261,11 +262,14 @@ function setRows(value)
     redraw();
 }
 
+function setRowsSelector(rows)
+{
+    const rowsSelector = document.getElementById('rows');
+    rowsSelector.options[rows - 3].selected = true;
+}
+
 function setElite()
 {
-    const rowsSelect = document.getElementById('rows');
-    rowsSelect.options[9].selected = true;
-    setRows(12);
     readlist(elite);
 }
 
@@ -322,8 +326,8 @@ function loadlist()
 
 function readlist(list)
 {
-    var t = list.split('\n', cols * rows);
-    len = t.length; //목록 길이
+    var t = list.split('\n', 120);
+    var len = t.length; //목록 길이
     if (len == 0) return;
 
     loadlist_loadCheck = 0;
@@ -367,7 +371,10 @@ function readlist(list)
     }
     if (loadArray.length === 0) return;
 
-    reset();
+    //reset();
+    mobList.length = 0;
+    mobCount = 0;
+
     for (let i = 0; i < loadArray.length; i++)
     {
         loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
@@ -398,6 +405,8 @@ function loadlist_loadMob(index, target, grey, count)
 
             if (loadlist_loadCheck == count)
             {
+                setRowsSelector(Math.max(3,Math.ceil(count/8)));
+                setRows(Math.max(3,Math.ceil(count/8)));
                 redraw();
             }
         }
