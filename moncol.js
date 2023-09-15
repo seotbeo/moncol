@@ -247,9 +247,9 @@ function checkboxGrey(event)
     }
 }
 
-function setRows(event)
+function setRows(value)
 {
-    rows = event.value;
+    rows = value;
     var max = cols * rows;
 
     if (mobCount > max)
@@ -259,6 +259,14 @@ function setRows(event)
     }
 
     redraw();
+}
+
+function setElite()
+{
+    const rowsSelect = document.getElementById('rows');
+    rowsSelect.options[9].selected = true;
+    setRows(12);
+    readlist(elite);
 }
 
 function savelist()
@@ -307,58 +315,62 @@ function loadlist()
         var r = new FileReader();
         r.readAsText(event.target.files[0],"UTF-8");
         r.onload = () => {
-            var t = r.result.split('\n', cols * rows);
-            len = t.length; //목록 길이
-            if (len == 0) return;
-
-            loadlist_loadCheck = 0;
-            var loadArray = new Array();
-
-            for (let i = 0; i < len; i++)
-            {
-                var k = t[i].split(':');
-                if  (k.length !== 2) //[(conut), [(name), (collect)]]
-                {
-                    continue;
-                }
-
-                var l = k[1].split("/");
-                if (l.length !== 2) //[(name), (collect)]
-                {
-                    continue;
-                }
-
-                var target = db.find(e => e.name == l[0].trim()) //name
-                if (!target)
-                {
-                    continue;
-                }
-                
-                var collect = l[1].trim(); //collect
-                if (collect === "미등록")
-                {
-                    var grey = true;
-                }
-                else if (collect === "등록")
-                {
-                    var grey = false;
-                }
-                else
-                {
-                    continue;
-                }
-                
-                loadArray.push({target: target, grey: grey});
-            }
-            if (loadArray.length === 0) return;
-
-
-            reset();
-            for (let i = 0; i < loadArray.length; i++)
-            {
-                loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
-            }
+            readlist(r.result);
         }
+    }
+}
+
+function readlist(list)
+{
+    var t = list.split('\n', cols * rows);
+    len = t.length; //목록 길이
+    if (len == 0) return;
+
+    loadlist_loadCheck = 0;
+    var loadArray = new Array();
+
+    for (let i = 0; i < len; i++)
+    {
+        var k = t[i].split(':');
+        if  (k.length !== 2) //[(conut), [(name), (collect)]]
+        {
+            continue;
+        }
+
+        var l = k[1].split("/");
+        if (l.length !== 2) //[(name), (collect)]
+        {
+            continue;
+        }
+
+        var target = db.find(e => e.name == l[0].trim()) //name
+        if (!target)
+        {
+            continue;
+        }
+        
+        var collect = l[1].trim(); //collect
+        if (collect === "미등록")
+        {
+            var grey = true;
+        }
+        else if (collect === "등록")
+        {
+            var grey = false;
+        }
+        else
+        {
+            continue;
+        }
+        
+        loadArray.push({target: target, grey: grey});
+    }
+    if (loadArray.length === 0) return;
+
+    reset();
+    for (let i = 0; i < loadArray.length; i++)
+    {
+        loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
     }
 }
 
