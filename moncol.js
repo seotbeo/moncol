@@ -76,7 +76,6 @@ function init() {
                 if (y > 54 + i * 74 && y < 124 + i * 74
                     && x > 34 + j * 74 && x < 104 + j * 74)
                 {
-                    console.log(mobList[j + i * cols].target.name);
                     mobList[j + i * cols].grey = !(mobList[j + i * cols].grey);
                     redraw();
                     return;
