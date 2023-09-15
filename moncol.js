@@ -132,7 +132,8 @@ function drawMob(index, j, i)
     h = mobList[index].img.height;
     canvas.setAttribute("image-rendering", "pixelated");
     ctx.drawImage(v === true ? mobList[index].imgG : mobList[index].img, 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
-    ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
+    if (target.star == 0) ctx.drawImage(ui[0], 32 + j * 74, 52 + i * 74);
+    else ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
 }
 
 function drawMemo(memo)
@@ -273,7 +274,8 @@ function savelist()
         str += " : ";
         str += mobList[i].target.name;
         str += " / ";
-        str += mobList[i].grey === true ? "미등록" : "등록";
+        if (mobList[i].target.name == "빈칸") str += "등록";
+        else str += mobList[i].grey === true ? "미등록" : "등록";
         str += "\n";
         outputStr += str;
     }

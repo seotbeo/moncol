@@ -7818,4 +7818,10 @@ const db =
         name: "한겨울의 옥토퍼스",
         star: 3,
     },
+    {
+        ID: 9100049,
+        src: "mob/9100049.img.png",
+        name: "빈칸",
+        star: 0,
+    },
 ]
