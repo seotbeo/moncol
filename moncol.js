@@ -213,7 +213,7 @@ function delMobToList()
 
     mobList.pop();
     mobCount--;
-    init();
+    redraw();
 }
 
 function save()
