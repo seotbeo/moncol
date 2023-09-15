@@ -78,6 +78,7 @@ function init() {
                 {
                     mobList[j + i * cols].grey = !(mobList[j + i * cols].grey);
                     redraw();
+                    showAlert(mobList[j + i * cols].target.name);
                     return;
                 }
             }
@@ -153,7 +154,12 @@ function drawMemo(memo)
 
 function addMobToList(mob)
 {
-    if (mobCount === rows * cols) return;
+    if (mobCount === rows * cols)
+    {
+        showAlert("더 이상 추가할 수 없습니다.");
+        return;
+    }
+
     if (mob)
     {
         mobName = mob;
@@ -166,6 +172,7 @@ function addMobToList(mob)
     var target = db.find(e => e.name == mobName)
     if (!target)
     {
+        showAlert("추가할 몬스터가 없습니다.");
         return;
     }
     
@@ -188,6 +195,7 @@ function addMobToList(mob)
             }
             mobList[mobCount++] = new Mob(target, mob[0], mob[1], greyCheck);
             redraw();
+            showAlert("추가되었습니다. [" + target.name + "]");
         }
     }
 
@@ -209,11 +217,16 @@ function addMobToList(mob)
 
 function delMobToList()
 {
-    if (mobCount === 0) return;
+    if (mobCount === 0)
+    {
+        showAlert("삭제할 몬스터가 없습니다.");
+        return;
+    }
 
-    mobList.pop();
+    var mob = mobList.pop();
     mobCount--;
     redraw();
+    showAlert("삭제되었습니다. [" + mob.target.name + "]");
 }
 
 function save()
@@ -224,10 +237,12 @@ function save()
     link.setAttribute("download", "monster_collection");
     link.click();
     URL.revokeObjectURL(link.href);
+    showAlert("이미지로 저장합니다.");
 }
 
 function reset()
 {
+    showAlert("초기화되었습니다.");
     if (mobCount === 0) return;
     
     mobList.length = 0;
@@ -270,6 +285,7 @@ function setRowsSelector(rows)
 
 function setElite()
 {
+    showAlert("엘리트 몬스터를 불러옵니다.");
     readlist(elite);
 }
 
@@ -307,6 +323,7 @@ function savelist()
     link.setAttribute("download", "몬스터컬렉션_" + date);
     link.click();
     URL.revokeObjectURL(link.href);
+    showAlert("텍스트로 리스트를 내보냅니다.");
 }
 
 function loadlist()
@@ -326,6 +343,7 @@ function loadlist()
 
 function readlist(list)
 {
+    showAlert("몬스터 정보를 확인하는 중입니다.");
     var t = list.split('\n', 120);
     var len = t.length; //목록 길이
     if (len == 0) return;
@@ -369,12 +387,18 @@ function readlist(list)
         
         loadArray.push({target: target, grey: grey});
     }
-    if (loadArray.length === 0) return;
+
+    if (loadArray.length === 0)
+    {
+        showAlert("올바른 파일이 아니거나, 몬스터 정보가 없습니다.");
+        return;
+    }
 
     //reset();
     mobList.length = 0;
     mobCount = 0;
 
+    showAlert("몬스터 이미지를 불러오는 중입니다.");
     for (let i = 0; i < loadArray.length; i++)
     {
         loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
@@ -408,6 +432,7 @@ function loadlist_loadMob(index, target, grey, count)
                 setRowsSelector(Math.max(3,Math.ceil(count/8)));
                 setRows(Math.max(3,Math.ceil(count/8)));
                 redraw();
+                showAlert("불러오기가 완료되었습니다.");
             }
         }
     }
