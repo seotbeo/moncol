@@ -5,6 +5,7 @@ var ui = new Array();
 var mobList = new Array();
 var greyCheck = false;
 var loadlist_loadCheck = 0;
+var slotMax = 120;
 
 function Mob(target, img, imgG, grey)
 {
@@ -162,13 +163,22 @@ function addMobToList(mob)
 
     if (mob)
     {
-        mobName = mob;
+        var mobName = mob;
+        const regex = new RegExp(`^섣버(?<star>[0-9]?)$`, "gi");
+        const s = regex.exec(mobName);
+        if (s) // 커스텀 몹
+        {
+            var star = Math.min(s.groups?.star, 7);
+            addCustomMobToList(Math.max(star, 1));
+            return;
+        }
     }
     else
     {
         const text = document.getElementById("search");
         var mobName = text ? text.value : null
     }
+
     var target = db.find(e => e.name == mobName)
     if (!target)
     {
@@ -211,6 +221,40 @@ function addMobToList(mob)
         else
         {
             mob[i].onload = mobLoaded;
+        }
+    }
+}
+
+function addCustomMobToList(star) // 커스텀 몹
+{
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".png, .jpg, .gif";
+    input.click();
+    input.onchange = (event) => {
+        var r = new FileReader();
+        var mobName = event.target.files[0].name;
+
+        r.readAsDataURL(event.target.files[0]);
+        r.onload = () => {
+            var img = new Image();
+            img.src = r.result;
+
+            img.onload = () => {
+                var img_resize = new Image();
+                img_resize.src = edit_resize(img);
+
+                img_resize.onload = () => {
+                    var img_grey = new Image();
+                    img_grey.src = edit_greyscale(img_resize);
+
+                    img_grey.onload = () => {
+                        mobList[mobCount++] = new Mob({ID: 0, src: "", name: mobName, star: star}, img_resize, img_grey, greyCheck);
+                        redraw();
+                        showAlert("추가되었습니다. [" + mobName + "]");
+                    }
+                }
+            }
         }
     }
 }
@@ -344,7 +388,7 @@ function loadlist()
 function readlist(list)
 {
     showAlert("몬스터 정보를 확인하는 중입니다.");
-    var t = list.split('\n', 120);
+    var t = list.split('\n', slotMax);
     var len = t.length; //목록 길이
     if (len == 0) return;
 

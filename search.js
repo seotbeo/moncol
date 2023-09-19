@@ -34,10 +34,11 @@ $search.onkeyup = (event) => {
 
     // ENTER KEY
     case 13:
-      document.querySelector("#search").value = "";
+      var input = $search.value;
+      $search.value = "";
 
-      var mob = matchDataList[nowIndex]
-      addMobToList(mob);
+      var mob = matchDataList[nowIndex];
+      addMobToList(mob ? mob : input);
 
       // 초기화
       nowIndex = 0;
