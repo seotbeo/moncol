@@ -164,19 +164,21 @@ function addMobToList(mob)
     if (mob)
     {
         var mobName = mob;
-        const regex = new RegExp(`^섣버(?<star>[0-9]?)$`, "gi");
-        const s = regex.exec(mobName);
-        if (s) // 커스텀 몹
-        {
-            var star = Math.min(s.groups?.star, 7);
-            addCustomMobToList(Math.max(star, 1));
-            return;
-        }
     }
     else
     {
         const text = document.getElementById("search");
         var mobName = text ? text.value : null
+    }
+
+    const regex = new RegExp(`^섣버(?<star>[0-9]?)$`, "gi");
+    const s = regex.exec(mobName);
+    if (s) // 커스텀 몹
+    {
+        var star = Math.min(s.groups?.star, 7);
+        addCustomMobToList(Math.max(star, 1));
+        document.querySelector("#search").value = "";
+        return;
     }
 
     var target = db.find(e => e.name == mobName)
