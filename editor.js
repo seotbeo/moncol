@@ -72,11 +72,11 @@ function edit_resize(img) // 리사이징
         }
     }
 
-    if (imgw >= 62 || imgh >= 62)
+    if (resultCanvas.width >= 57 && resultCanvas.height >= 61)
     {
-        for (let i = 60; i < resultCanvas.width; i++)
+        for (let i = 57; i < resultCanvas.width; i++)
         {
-            for (let j = 60; j < resultCanvas.height; j++)
+            for (let j = 61; j < resultCanvas.height; j++)
             {
                 var index = (i + j * resultCanvas.width) * 4;
 

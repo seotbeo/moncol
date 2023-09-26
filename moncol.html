@@ -9,38 +9,58 @@
     </head>
 
     <body onload="init();">
-        <div class="area">
+        <div style="margin-top: 1rem;">
             <canvas id="preview" width="1" height="1">지원되지 않습니다.</canvas>
         </div>
-        <div class="area">
+        <div style="margin-top: 1rem;">
             <input type="text" id="memo" placeholder="메모" autocomplete="off" />
         </div>
         <section class="alertarea_out">
-            <div class="alertarea_in">
-                
-            </div>
+            <div class="alertarea_in"></div>
         </section>
-        <div class="area">
-            <label for="grey">흑백으로</label>
-            <input type="checkbox" id="grey" onclick="checkboxGrey(event)" />
-            <label for="rows">슬롯</label>
-            <select name="rows" id="rows" onchange="setRows(this.value);">
-                <option value="3">24칸</option>
-                <option value="4">32칸</option>
-                <option value="5">40칸</option>
-                <option value="6" selected="selected">48칸</option>
-                <option value="7">56칸</option>
-                <option value="8">64칸</option>
-                <option value="9">72칸</option>
-                <option value="10">80칸</option>
-                <option value="11">88칸</option>
-                <option value="12">96칸</option>
-                <option value="13">104칸</option>
-                <option value="14">112칸</option>
-                <option value="15">120칸</option>
-            </select>
-            <button type="button" class="bigButton" style="margin-left: 30px;" onclick="setElite();">엘리트 몬스터 불러오기</button>
-            <br>
+        <div style="margin-top: 1rem;">
+            <div style="display:inline-block; width:250px; text-align:left;">
+                <label for="grey">흑백으로 추가</label>
+                <input type="checkbox" id="grey" onclick="checkboxGrey(event)" />
+                <label for="rows">슬롯</label>
+                <select name="rows" id="rows" onchange="setRows(this.value);">
+                    <option value="3">24칸</option>
+                    <option value="4">32칸</option>
+                    <option value="5">40칸</option>
+                    <option value="6" selected="selected">48칸</option>
+                    <option value="7">56칸</option>
+                    <option value="8">64칸</option>
+                    <option value="9">72칸</option>
+                    <option value="10">80칸</option>
+                    <option value="11">88칸</option>
+                    <option value="12">96칸</option>
+                    <option value="13">104칸</option>
+                    <option value="14">112칸</option>
+                    <option value="15">120칸</option>
+                </select>
+            </div>
+            <div style="display:inline-block; width:250px; text-align:right;">
+                <button type="button" class="bigButton" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
+            </div>
+        </div>
+        <div>
+            <div style="display:inline-block; width:200px;">
+            </div>
+            <div style="display:inline-block; width:300px; text-align:right;">
+                <label for="stars">별</label>
+                <select name="stars" id="stars">
+                    <option value="1" selected="selected">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">S</option>
+                    <option value="7">E</option>
+                </select>
+                <button type="button" style="width: 200px; margin-left: 15px;" onclick="addCustomMobToList(1);">로컬 이미지를 몬스터로 추가</button>
+            </div>
+        </div>
+        <div>
             <button type="button" onclick="addMobToList();">추가</button>
             <button type="button" onclick="delMobToList();">삭제</button>
             <button type="button" onclick="reset();">초기화</button>

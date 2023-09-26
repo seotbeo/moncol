@@ -171,16 +171,6 @@ function addMobToList(mob)
         var mobName = text ? text.value : null
     }
 
-    const regex = new RegExp(`^섣버(?<star>[0-9]?)$`, "gi");
-    const s = regex.exec(mobName);
-    if (s) // 커스텀 몹
-    {
-        var star = Math.min(s.groups?.star, 7);
-        addCustomMobToList(Math.max(star, 1));
-        document.querySelector("#search").value = "";
-        return;
-    }
-
     var target = db.find(e => e.name == mobName)
     if (!target)
     {
@@ -227,22 +217,33 @@ function addMobToList(mob)
     }
 }
 
-function addCustomMobToList(star) // 커스텀 몹
+function addCustomMobToList() // 커스텀 몹
 {
+    const starsSelector = document.getElementById('stars');
+    var star = starsSelector.value;
+
     var input = document.createElement("input");
     input.type = "file";
-    input.accept = ".png, .jpg, .gif";
+    input.accept = "image/*";
     input.click();
     input.onchange = (event) => {
         var r = new FileReader();
-        var mobName = event.target.files[0].name;
+        var file = event.target.files[0];
+        var mobName = file.name;
 
-        r.readAsDataURL(event.target.files[0]);
+        if (!(file.type.split('/')[0] == "image"))
+        {
+            showAlert("이미지 파일이 아닙니다.");
+            return;
+        }
+
+        r.readAsDataURL(file);
         r.onload = () => {
             var img = new Image();
             img.src = r.result;
 
             img.onload = () => {
+                showAlert("몬스터 이미지를 변환 중입니다.");
                 var img_resize = new Image();
                 img_resize.src = edit_resize(img);
 
@@ -380,7 +381,15 @@ function loadlist()
     input.click();
     input.onchange = (event) => {
         var r = new FileReader();
-        r.readAsText(event.target.files[0],"UTF-8");
+        var file = event.target.files[0];
+
+        if (!(file.type == "text/plain"))
+        {
+            showAlert("텍스트 파일이 아닙니다.");
+            return;
+        }
+        
+        r.readAsText(file,"UTF-8");
         r.onload = () => {
             readlist(r.result);
         }

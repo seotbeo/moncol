@@ -88,6 +88,7 @@ input::placeholder {
 
 #grey {
   width: 20px;
+  height: 20px;
   margin: 0px 10px 0px 0px;
   text-align: center;
   vertical-align: middle;
@@ -130,15 +131,6 @@ button:active {
   background: #ccffcc;
   color: #333333;
   border: 1px solid #dddddd;
-}
-
-.bigButton {
-  width: 160px;
-  height: 35px;
-}
-
-.area {
-  margin-top: 1rem;
 }
 
 canvas {
