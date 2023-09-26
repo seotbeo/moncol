@@ -16,6 +16,7 @@ function Mob(target, img, imgG, grey)
 }
 
 function init() {
+    // UI 리소스 로딩
     var ui_src = ["resources/ui_none.png", //0
                 "resources/ui_1star.png", //1
                 "resources/ui_2star.png", //2
@@ -54,6 +55,7 @@ function init() {
         }
     }
     
+    // 캔버스 영역 클릭 이벤트
     const canvas = document.getElementById("preview");
     canvas.addEventListener('click', (event) => {
         var canvasLeft = canvas.offsetLeft + canvas.clientLeft;
@@ -85,6 +87,17 @@ function init() {
             }
         }
     });
+
+    // rows 선택 콤보박스
+    const rowsSelector = document.getElementById('rows');
+    for (let i = 3; i <= parseInt(slotMax / cols); i++)
+    {
+        var option = document.createElement("option");
+        option.value = i;
+        option.innerHTML = (i * cols) + "칸";
+        rowsSelector.appendChild(option);
+    }
+    rowsSelector.options[rows - 3].selected = true;
 }
 
 function redraw()

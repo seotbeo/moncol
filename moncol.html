@@ -23,21 +23,7 @@
                 <label for="grey">흑백으로 추가</label>
                 <input type="checkbox" id="grey" onclick="checkboxGrey(event)" />
                 <label for="rows">슬롯</label>
-                <select name="rows" id="rows" onchange="setRows(this.value);">
-                    <option value="3">24칸</option>
-                    <option value="4">32칸</option>
-                    <option value="5">40칸</option>
-                    <option value="6" selected="selected">48칸</option>
-                    <option value="7">56칸</option>
-                    <option value="8">64칸</option>
-                    <option value="9">72칸</option>
-                    <option value="10">80칸</option>
-                    <option value="11">88칸</option>
-                    <option value="12">96칸</option>
-                    <option value="13">104칸</option>
-                    <option value="14">112칸</option>
-                    <option value="15">120칸</option>
-                </select>
+                <select name="rows" id="rows" onchange="setRows(this.value);"></select>
             </div>
             <div style="display:inline-block; width:250px; text-align:right;">
                 <button type="button" class="bigButton" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
