@@ -155,9 +155,9 @@ function drawMemo(memo)
 
 function addMobToList(mob)
 {
-    if (mobCount === rows * cols)
+    if (mobCount === slotMax)
     {
-        showAlert("더 이상 추가할 수 없습니다.");
+        showAlert("더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)");
         return;
     }
 
@@ -196,7 +196,13 @@ function addMobToList(mob)
                 mob[i].setAttribute("image-rendering", "pixelated");
             }
             mobList[mobCount++] = new Mob(target, mob[0], mob[1], greyCheck);
-            redraw();
+            
+            if (mobCount >= rows * cols)
+            {
+                rowsAutoIncrease(mobCount);
+            }
+            else redraw();
+
             showAlert("추가되었습니다. [" + target.name + "]");
         }
     }
@@ -219,12 +225,12 @@ function addMobToList(mob)
 
 function addCustomMobToList() // 커스텀 몹
 {
-    if (mobCount === rows * cols)
+    if (mobCount === slotMax)
     {
-        showAlert("더 이상 추가할 수 없습니다.");
+        showAlert("더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)");
         return;
     }
-    
+
     const starsSelector = document.getElementById('stars');
     var star = starsSelector.value;
 
@@ -259,7 +265,13 @@ function addCustomMobToList() // 커스텀 몹
 
                     img_grey.onload = () => {
                         mobList[mobCount++] = new Mob({ID: 0, src: "", name: mobName, star: star}, img_resize, img_grey, greyCheck);
-                        redraw();
+
+                        if (mobCount >= rows * cols)
+                        {
+                            rowsAutoIncrease(mobCount);
+                        }
+                        else redraw();
+
                         showAlert("추가되었습니다. [" + mobName + "]");
                     }
                 }
@@ -334,6 +346,12 @@ function setRowsSelector(rows)
 {
     const rowsSelector = document.getElementById('rows');
     rowsSelector.options[rows - 3].selected = true;
+}
+
+function rowsAutoIncrease(count) // calls redraw() in setRows()
+{
+    setRowsSelector(Math.max(3,Math.ceil(count/8)));
+    setRows(Math.max(3,Math.ceil(count/8)));
 }
 
 function setElite()
@@ -490,9 +508,7 @@ function loadlist_loadMob(index, target, grey, count)
 
             if (loadlist_loadCheck == count)
             {
-                setRowsSelector(Math.max(3,Math.ceil(count/8)));
-                setRows(Math.max(3,Math.ceil(count/8)));
-                redraw();
+                rowsAutoIncrease(count);
                 showAlert("불러오기가 완료되었습니다.");
             }
         }
