@@ -219,6 +219,12 @@ function addMobToList(mob)
 
 function addCustomMobToList() // 커스텀 몹
 {
+    if (mobCount === rows * cols)
+    {
+        showAlert("더 이상 추가할 수 없습니다.");
+        return;
+    }
+    
     const starsSelector = document.getElementById('stars');
     var star = starsSelector.value;
 
