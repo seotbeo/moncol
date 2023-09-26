@@ -5,7 +5,7 @@ var ui = new Array();
 var mobList = new Array();
 var greyCheck = false;
 var loadlist_loadCheck = 0;
-var slotMax = 120;
+var slotMax = 200;
 
 function Mob(target, img, imgG, grey)
 {
