@@ -3,7 +3,7 @@ function round_custom(a)
     var t = 0.985;
     if (a % 1 >= t)
     {
-        return Math.floor(a) + 1;
+        return Math.ceil(a);
     }
     else
     {

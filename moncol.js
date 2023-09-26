@@ -210,7 +210,7 @@ function addMobToList(mob)
             }
             mobList[mobCount++] = new Mob(target, mob[0], mob[1], greyCheck);
             
-            if (mobCount >= rows * cols)
+            if (mobCount > rows * cols)
             {
                 rowsAutoIncrease(mobCount);
             }
@@ -279,7 +279,7 @@ function addCustomMobToList() // 커스텀 몹
                     img_grey.onload = () => {
                         mobList[mobCount++] = new Mob({ID: 0, src: "", name: mobName, star: star}, img_resize, img_grey, greyCheck);
 
-                        if (mobCount >= rows * cols)
+                        if (mobCount > rows * cols)
                         {
                             rowsAutoIncrease(mobCount);
                         }
@@ -375,7 +375,11 @@ function setElite()
 
 function savelist()
 {
-    if (mobList.length === 0) return;
+    if (mobCount === 0)
+    {
+        showAlert("내보낼 몬스터가 없습니다.");
+        return;
+    }
 
     var outputStr = "";
 
