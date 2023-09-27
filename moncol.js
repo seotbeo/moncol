@@ -494,7 +494,6 @@ function readlist(list)
     mobList.length = 0;
     mobCount = 0;
 
-    showAlert("몬스터 이미지를 불러오는 중입니다.");
     for (let i = 0; i < loadArray.length; i++)
     {
         loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
@@ -521,7 +520,7 @@ function loadlist_loadMob(index, target, grey, count)
             }
             mobList[index] = new Mob(target, mob[0], mob[1], grey);
             mobCount++;
-            loadlist_loadCheck++;
+            showAlert("몬스터 이미지를 불러오는 중입니다. [" + loadlist_loadCheck++ + " / " + count + "]");
 
             if (loadlist_loadCheck == count)
             {
