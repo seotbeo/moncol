@@ -1,7 +1,95 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<body>
-<a href="moncol.html">몬컬</a>
-<br>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta property="og:title" content="몬스터 컬렉션" />
+        <meta property="og:description" content="몬컬 페이지 만들기" />
+        <meta property="og:url" content="https://seotbeo.github.io/moncol" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://seotbeo.github.io/resources/thumb.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="resources/favicon.png"/>
+        <link rel="apple-touch-icon" href="resources/favicon.png"/>
+        <title>몬스터 컬렉션</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WZMM894RK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-3WZMM894RK');
+        </script>
+    </head>
+
+    <body onload="init();">
+        <div style="margin-top: 1rem;">
+            <canvas id="preview" width="1" height="1">지원되지 않습니다.</canvas>
+        </div>
+        <div style="margin-top: 1rem;">
+            <input type="text" id="memo" placeholder="메모" autocomplete="off" />
+        </div>
+        <section class="alertarea_out">
+            <div class="alertarea_in"></div>
+        </section>
+        <div style="margin-top: 1rem;">
+            <div style="display:inline-block; width:250px; text-align:left;">
+                <label for="grey">흑백으로 추가</label>
+                <input type="checkbox" id="grey" onclick="checkboxGrey(event)" />
+                <label for="rows">슬롯</label>
+                <select name="rows" id="rows" onchange="setRows(this.value);"></select>
+            </div>
+            <div style="display:inline-block; width:250px; text-align:right;">
+                <button type="button" class="bigButton" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
+            </div>
+        </div>
+        <div>
+            <div style="display:inline-block; width:200px;">
+            </div>
+            <div style="display:inline-block; width:300px; text-align:right;">
+                <label for="stars">별</label>
+                <select name="stars" id="stars">
+                    <option value="1" selected="selected">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">S</option>
+                    <option value="7">E</option>
+                </select>
+                <button type="button" style="width: 200px; margin-left: 15px;" onclick="addCustomMobToList(1);">로컬 이미지를 몬스터로 추가</button>
+            </div>
+        </div>
+        <div>
+            <button type="button" onclick="addMobToList();">추가</button>
+            <button type="button" onclick="delMobToList();">삭제</button>
+            <button type="button" onclick="reset();">초기화</button>
+            <button type="button" onclick="save();">이미지저장</button>
+            <button type="button" onclick="savelist();">내보내기</button>
+            <button type="button" onclick="loadlist();">불러오기</button>
+        </div>
+        <section>
+            <input type="text" id="search" placeholder="몬스터 이름을 입력하세요." autocomplete="off" />
+            <div class="autocomplete"></div>
+        </section>
+    </body>
+    <script type="text/javascript" src="moncol.js">
+    </script>
+    <script type="text/javascript" src="db.js">
+    </script>
+    <script type="text/javascript" src="db_elite.js">
+    </script>
+    <script type="text/javascript" src="search.js">
+    </script>
+    <script type="text/javascript" src="memo.js">
+    </script>
+    <script type="text/javascript" src="alert.js">
+    </script>
+    <script type="text/javascript" src="editor.js">
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">
+    </script>
 </html>
