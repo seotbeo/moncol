@@ -369,7 +369,24 @@ function rowsAutoIncrease(count) // calls redraw() in setRows()
 function setElite()
 {
     showAlert("엘리트 몬스터를 불러옵니다.");
-    readlist(elite);
+    
+    loadlist_loadCheck = 0;
+    var loadArray = new Array();
+
+    for (var i = 0; i < elite.length; i++) {
+        var target = db.find(e => (e.ID == elite[i].ID) && (e.star == elite[i].star));
+        if (!target) {
+            target = db.find(e => e.name == "빈칸");
+        }
+        loadArray.push({target: target, grey: false});
+    }
+    
+    mobList.length = 0;
+    mobCount = 0;
+
+    for (let i = 0; i < loadArray.length; i++) {
+        loadlist_loadMob(i, loadArray[i].target, loadArray[i].grey, loadArray.length);
+    }
 }
 
 function savelist()
