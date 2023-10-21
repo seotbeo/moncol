@@ -7,12 +7,13 @@ var greyCheck = false;
 var loadlist_loadCheck = 0;
 var slotMax = 200;
 
-function Mob(target, img, imgG, grey)
-{
-    this.target = target;
-    this.grey = grey;
-    this.img = img;
-    this.imgG = imgG;
+class Mob {
+    constructor(target, img, imgG, grey) {
+        this.target = target;
+        this.grey = grey;
+        this.img = img;
+        this.imgG = imgG;
+    }
 }
 
 function init() {
