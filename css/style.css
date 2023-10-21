@@ -1,11 +1,11 @@
 @font-face { /*https://maplestory.nexon.com/Media/Font*/
   font-family: "MaplestoryB";
-  src: url("resources/font_MaplestoryB.ttf");
+  src: url("../resources/font_MaplestoryB.ttf");
 }
 
 @font-face { /*https://maplestory.nexon.com/Media/Font*/
   font-family: "MaplestoryL";
-  src: url("resources/font_MaplestoryL.ttf");
+  src: url("../resources/font_MaplestoryL.ttf");
 }
 
 /* 현재 선택된 검색어 */
