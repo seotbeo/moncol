@@ -519,7 +519,7 @@ function loadlist_loadMob(index, target, grey, count)
             }
             mobList[index] = new Mob(target, mob[0], mob[1], grey);
             mobCount++;
-            showAlert("몬스터 이미지를 불러오는 중입니다. [" + loadlist_loadCheck++ + " / " + count + "]");
+            showAlert("몬스터 이미지를 불러오는 중입니다. [" + ++loadlist_loadCheck + " / " + count + "]");
 
             if (loadlist_loadCheck == count)
             {
