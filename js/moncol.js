@@ -320,12 +320,12 @@ function save()
 function reset()
 {
     showAlert("초기화되었습니다.");
-    if (mobCount === 0) return;
-    
-    mobList.length = 0;
-    mobCount = 0;
     setRowsSelector(6);
     setRows(6);
+
+    if (mobCount === 0) return;
+    mobList.length = 0;
+    mobCount = 0;
 }
 
 function checkboxGrey(event)
