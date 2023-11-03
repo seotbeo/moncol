@@ -25,7 +25,9 @@
         </script>
     </head>
     <body onload="init();">
-        <div id="mainArea">
+        <div id="mainArea">            
+            <label for="serv">서버</label>
+            <select name="rows" id="serv" onchange="setServer(this.value);"></select>
             <div id="mainCanvas">
                 <canvas id="preview" width="666" height="1"></canvas>
                 <canvas id="tooltip" width="666" height="1"></canvas>
@@ -82,9 +84,15 @@
     </body>
     <script type="text/javascript" src="js/moncol.js">
     </script>
-    <script type="text/javascript" src="js/db.js">
+    <script type="text/javascript" src="js/db/db.js">
     </script>
-    <script type="text/javascript" src="js/db_elite.js">
+    <script type="text/javascript" src="js/db/db_jms.js">
+    </script>
+    <script type="text/javascript" src="js/db/db_msea.js">
+    </script>
+    <script type="text/javascript" src="js/db/db_tms.js">
+    </script>
+    <script type="text/javascript" src="js/db/db_elite.js">
     </script>
     <script type="text/javascript" src="js/search.js">
     </script>

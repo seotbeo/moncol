@@ -8,6 +8,7 @@ var boolSelected = false;
 var selectedIndex = 0;
 var loadlist_loadCheck = 0;
 var slotMax = 200;
+var db;
 
 class Mob {
     constructor(target, img, imgG, grey) {
@@ -19,6 +20,7 @@ class Mob {
 }
 
 function init() {
+    setDB("KMS");
     // UI 리소스 로딩
     var ui_src = ["resources/ui_none.png", //0
                 "resources/ui_1star.png", //1
@@ -203,6 +205,21 @@ function init() {
             }
         }
     });
+
+    // server 선택 콤보박스
+    const serverSelector = document.getElementById('serv');
+    var serv1 = document.createElement("option");
+    serv1.value = serv1.innerHTML = "KMS"
+    serverSelector.appendChild(serv1);
+    var serv2 = document.createElement("option");
+    serv2.value = serv2.innerHTML = "JMS"
+    serverSelector.appendChild(serv2);
+    var serv3 = document.createElement("option");
+    serv3.value = serv3.innerHTML = "TMS"
+    serverSelector.appendChild(serv3);
+    var serv4 = document.createElement("option");
+    serv4.value = serv4.innerHTML = "MSEA"
+    serverSelector.appendChild(serv4);
 
     // rows 선택 콤보박스
     const rowsSelector = document.getElementById('rows');
@@ -507,7 +524,7 @@ function setElite()
     for (var i = 0; i < elite.length; i++) {
         var target = db.find(e => (e.ID == elite[i].ID) && (e.star == elite[i].star));
         if (!target) {
-            target = db.find(e => e.name == "빈칸");
+            target = db.find(e => ["빈칸", "空位", "空白", "Blank"].includes(e.name));
         }
         loadArray.push({target: target, grey: false});
     }
@@ -537,7 +554,7 @@ function savelist()
         str += " : ";
         str += mobList[i].target.name;
         str += " / ";
-        if (mobList[i].target.name == "빈칸") str += "등록";
+        if (["빈칸", "空位", "空白", "Blank"].includes(mobList[i].target.name)) str += "등록";
         else str += mobList[i].grey === true ? "미등록" : "등록";
         str += "\n";
         outputStr += str;
@@ -697,4 +714,10 @@ function deselect() {
     const selectedImage = document.getElementById("selectedImage");
     selectedImage.remove();
     boolSelected = false;
+}
+
+function setServer(server) {
+    reset();
+    setDB(server);
+    showAlert("Set the data to " + server);
 }
