@@ -28,7 +28,16 @@ function init() {
                 "resources/ui_event.png", //7
                 "resources/ui_bg_t.png", //8
                 "resources/ui_bg_c.png", //9
-                "resources/ui_bg_b.png"]; //10:
+                "resources/ui_bg_b.png", //10
+                "resources/ui_tooltip_nw.png", //11
+                "resources/ui_tooltip_n.png", //12
+                "resources/ui_tooltip_ne.png", //13
+                "resources/ui_tooltip_w.png", //14
+                "resources/ui_tooltip_c.png", //15
+                "resources/ui_tooltip_e.png", //16
+                "resources/ui_tooltip_sw.png", //17
+                "resources/ui_tooltip_s.png", //18
+                "resources/ui_tooltip_se.png"]; //19
 
     var loadedCount = 0;
 
@@ -57,14 +66,12 @@ function init() {
     }
     
     // 캔버스 영역 클릭 이벤트
-    const canvas = document.getElementById("preview");
+    const canvas = document.getElementById("tooltip");
     canvas.addEventListener('click', (event) => {
-        var canvasLeft = canvas.offsetLeft + canvas.clientLeft;
-        var canvasTop = canvas.offsetTop + canvas.clientTop;
-        var x = event.pageX - canvasLeft;
-        var y = event.pageY - canvasTop;
+        var x = event.offsetX;
+        var y = event.offsetY;
         var count = 0;
-
+        
         if (y < canvas.top && y > canvas.top + canvas.height 
             && x < canvas.left && x > canvas.left + canvas.width)
         {
@@ -89,6 +96,44 @@ function init() {
         }
     });
 
+    // 캔버스 툴팁 영역 마우스오버 이벤트
+    canvas.addEventListener('mousemove', (event) => {
+        var x = event.offsetX;
+        var y = event.offsetY;
+        var count = 0;
+
+        if (y < canvas.top && y > canvas.top + canvas.height 
+            && x < canvas.left && x > canvas.left + canvas.width)
+        {
+            return;
+        }
+
+        for (let i = 0; i < rows; i++)
+        {
+            for (let j = 0; j < cols; j++)
+            {
+                if (++count > mobCount) return;
+
+                if (y > 54 + i * 74 && y < 124 + i * 74
+                    && x > 34 + j * 74 && x < 104 + j * 74)
+                {
+                    clearTooltip();
+                    drawTooltip(mobList[j + i * cols].target.name, x, y, canvas.width, canvas.height);
+                    return;
+                }
+                else
+                {
+                    clearTooltip();
+                }
+            }
+        }
+    });
+    
+    // 캔버스 영역 우클릭 방지
+    canvas.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+    });
+
     // rows 선택 콤보박스
     const rowsSelector = document.getElementById('rows');
     for (let i = 3; i <= parseInt(slotMax / cols); i++)
@@ -104,15 +149,22 @@ function init() {
 function redraw()
 {
     const canvas = document.getElementById("preview");
-    const canvas2 = document.getElementById("preview");
+    const canvasTooltip = document.getElementById("tooltip");
+    const divCanvas = document.getElementById("mainCanvas");
     const ctx = canvas.getContext("2d");
 
     var count = mobCount * 1;
     var index = 0;
     var bg_c_count = parseInt(rows) - 2;
 
-    canvas.width = canvas2.width = ui[8].width;
-    canvas.height = canvas2.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
+    canvas.width = canvasTooltip.width = ui[8].width;
+    canvas.height = canvasTooltip.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
+    divCanvas.style.width = canvas.width + "px";
+    divCanvas.style.height = canvas.height + "px";
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearTooltip();
+
     ctx.drawImage(ui[8], 0, 0);
     for (let i = 0; i < bg_c_count; i++)
     {
@@ -150,20 +202,6 @@ function drawMob(index, j, i)
     ctx.drawImage(v === true ? mobList[index].imgG : mobList[index].img, 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     if (target.star == 0) ctx.drawImage(ui[0], 32 + j * 74, 52 + i * 74);
     else ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
-}
-
-function drawMemo(memo)
-{
-    const canvas = document.getElementById("preview");
-    const ctx = canvas.getContext("2d");
-
-    ctx.font = "17px MaplestoryL";
-    ctx.fillStyle = "#eeff00";
-    ctx.textAlign = "right";
-    ctx.letterSpacing = "1px";
-    ctx.strokeStyle = "#eeff00";
-
-    ctx.fillText(memo, 635, 35, 525);
 }
 
 function addMobToList(mob)

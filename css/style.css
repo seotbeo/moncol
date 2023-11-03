@@ -162,3 +162,32 @@ canvas {
   text-align: center;
   font-size: 0.8rem;
 }
+
+#mainArea {
+  position: relative;
+  margin-top: 1rem;
+}
+
+#mainCanvas {
+  position: relative;
+  margin-top: 1rem;
+  height: 520px;
+}
+
+#belowCanvas {
+  position: relative;
+}
+
+#preview {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+#tooltip {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 3;
+}
