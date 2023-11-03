@@ -12,7 +12,7 @@ $search.onkeyup = (event) => {
 
     // 자동완성 필터링
     matchDataList = value
-        ? searchdb.filter((label) => label.includes(value))
+        ? searchdb.filter((label) => label.toLowerCase().includes(value.toLowerCase()))
         : [];
     
     switch (event.keyCode) {
