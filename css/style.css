@@ -171,6 +171,7 @@ canvas {
 #mainCanvas {
   position: relative;
   margin-top: 1rem;
+  width: 666px;
   height: 520px;
 }
 
@@ -189,5 +190,5 @@ canvas {
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: 3;
+  z-index: 4;
 }

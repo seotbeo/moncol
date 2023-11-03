@@ -4,6 +4,8 @@ var cols = 8;
 var ui = new Array();
 var mobList = new Array();
 var greyCheck = false;
+var boolSelected = false;
+var selectedIndex = 0;
 var loadlist_loadCheck = 0;
 var slotMax = 200;
 
@@ -37,7 +39,8 @@ function init() {
                 "resources/ui_tooltip_e.png", //16
                 "resources/ui_tooltip_sw.png", //17
                 "resources/ui_tooltip_s.png", //18
-                "resources/ui_tooltip_se.png"]; //19
+                "resources/ui_tooltip_se.png", //19
+                "resources/ui_selected.gif"]; //20
 
     var loadedCount = 0;
 
@@ -82,17 +85,91 @@ function init() {
         {
             for (let j = 0; j < cols; j++)
             {
-                if (++count > mobCount) return;
+                if (++count > mobCount) break;
+
+                if (y > 54 + i * 74 && y < 124 + i * 74
+                    && x > 34 + j * 74 && x < 104 + j * 74) {
+                    index = j + i * cols;
+                    if (boolSelected) {
+                        if (selectedIndex == index) break;
+
+                        var move = mobList[selectedIndex];
+                        mobList.splice(selectedIndex, 1);
+                        mobList.splice(index, 0, move);
+                        deselect();
+                        showAlert("이동 [" + move.target.name + "]");
+                    }
+                    else {
+                        mobList[index].grey = !(mobList[index].grey);
+                        showAlert(mobList[index].target.name);
+                    }
+                    redraw();
+                    return;
+                }
+            }
+        }
+
+        if (boolSelected) {
+            deselect();
+            showAlert("선택 해제");
+        }
+    });
+    
+    // 캔버스 영역 우클릭 이벤트
+    canvas.addEventListener('contextmenu', (event) => {
+        event.preventDefault(); // 캔버스 영역 우클릭 메뉴 방지
+        var x = event.offsetX;
+        var y = event.offsetY;
+        var count = 0;
+        
+        if (y < canvas.top && y > canvas.top + canvas.height 
+            && x < canvas.left && x > canvas.left + canvas.width)
+        {
+            return;
+        }
+
+        for (let i = 0; i < rows; i++)
+        {
+            for (let j = 0; j < cols; j++)
+            {
+                if (++count > mobCount) break;
 
                 if (y > 54 + i * 74 && y < 124 + i * 74
                     && x > 34 + j * 74 && x < 104 + j * 74)
                 {
-                    mobList[j + i * cols].grey = !(mobList[j + i * cols].grey);
-                    redraw();
-                    showAlert(mobList[j + i * cols].target.name);
+                    var index = j + i * cols;
+                    if (boolSelected) {
+                        if (selectedIndex == index) break;
+
+                        [mobList[selectedIndex], mobList[index]] = [mobList[index], mobList[selectedIndex]];
+                        deselect();
+                        redraw();
+                        showAlert("교체 [" + mobList[index].target.name + " ↔ " + mobList[selectedIndex].target.name + "]");
+                    }
+                    else {
+                        selectedIndex = index;
+                        boolSelected = true;
+
+                        const divCanvas = document.getElementById("mainCanvas");
+                        const selectedImage = document.createElement('img');
+                        selectedImage.id = "selectedImage";
+                        selectedImage.src = ui[20].src;
+                        selectedImage.style.position = "absolute";
+                        selectedImage.style.top = 49 + i * 74 + "px";
+                        selectedImage.style.left = 29 + j * 74 + "px";
+                        selectedImage.style.zIndex = "3";
+                        divCanvas.appendChild(selectedImage);
+
+                        showAlert("선택 [" + mobList[index].target.name + "]");
+                    }
                     return;
                 }
             }
+        }
+
+        if (boolSelected) {
+            deselect();
+            showAlert("선택 해제");
         }
     });
 
@@ -115,23 +192,16 @@ function init() {
                 if (++count > mobCount) return;
 
                 if (y > 54 + i * 74 && y < 124 + i * 74
-                    && x > 34 + j * 74 && x < 104 + j * 74)
-                {
+                    && x > 34 + j * 74 && x < 104 + j * 74) {
                     clearTooltip();
                     drawTooltip(mobList[j + i * cols].target.name, x, y, canvas.width, canvas.height);
                     return;
                 }
-                else
-                {
+                else {
                     clearTooltip();
                 }
             }
         }
-    });
-    
-    // 캔버스 영역 우클릭 방지
-    canvas.addEventListener('contextmenu', (event) => {
-        event.preventDefault();
     });
 
     // rows 선택 콤보박스
@@ -150,15 +220,16 @@ function redraw()
 {
     const canvas = document.getElementById("preview");
     const canvasTooltip = document.getElementById("tooltip");
+    const canvasSelect = document.getElementById("tooltip");
     const divCanvas = document.getElementById("mainCanvas");
     const ctx = canvas.getContext("2d");
 
     var count = mobCount * 1;
     var index = 0;
     var bg_c_count = parseInt(rows) - 2;
-
-    canvas.width = canvasTooltip.width = ui[8].width;
-    canvas.height = canvasTooltip.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
+    
+    //canvas.width = canvasTooltip.width = ui[8].width;
+    canvas.height = canvasTooltip.height = canvasSelect.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
     divCanvas.style.width = canvas.width + "px";
     divCanvas.style.height = canvas.height + "px";
 
@@ -246,8 +317,16 @@ function addMobToList(mob)
                 mob[i].imageSmoothingEnabled = mob[i].oImageSmoothingEnabled = mob[i].mozImageSmoothingEnabled = mob[i].webkitImageSmoothingEnabled = false;
                 mob[i].setAttribute("image-rendering", "pixelated");
             }
-            mobList[mobCount++] = new Mob(target, mob[0], mob[1], greyCheck);
             
+            if (boolSelected) {
+                mobCount++;
+                mobList.splice(selectedIndex, 0, new Mob(target, mob[0], mob[1], greyCheck));
+                deselect();
+            }
+            else {
+                mobList[mobCount++] = new Mob(target, mob[0], mob[1], greyCheck);
+            }
+
             if (mobCount > rows * cols)
             {
                 rowsAutoIncrease(mobCount);
@@ -315,7 +394,14 @@ function addCustomMobToList() // 커스텀 몹
                     img_grey.src = edit_greyscale(img_resize);
 
                     img_grey.onload = () => {
-                        mobList[mobCount++] = new Mob({ID: 0, src: "", name: mobName, star: star}, img_resize, img_grey, greyCheck);
+                        if (boolSelected) {
+                            mobCount++;
+                            mobList.splice(selectedIndex, 0, new Mob({ID: 0, src: "", name: mobName, star: star}, img_resize, img_grey, greyCheck));
+                            deselect();
+                        }
+                        else {
+                            mobList[mobCount++] = new Mob({ID: 0, src: "", name: mobName, star: star}, img_resize, img_grey, greyCheck);
+                        }
 
                         if (mobCount > rows * cols)
                         {
@@ -339,7 +425,14 @@ function delMobToList()
         return;
     }
 
-    var mob = mobList.pop();
+    if (boolSelected) {
+        var mob = mobList[selectedIndex];
+        mobList.splice(selectedIndex, 1);
+        deselect();
+    }
+    else {
+        var mob = mobList.pop();
+    }
     mobCount--;
     redraw();
     showAlert("삭제되었습니다. [" + mob.target.name + "]");
@@ -598,4 +691,10 @@ function loadlist_loadMob(index, target, grey, count)
             mob[j].onload = mobLoaded;
         }
     }
+}
+
+function deselect() {
+    const selectedImage = document.getElementById("selectedImage");
+    selectedImage.remove();
+    boolSelected = false;
 }
