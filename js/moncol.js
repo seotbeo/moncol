@@ -9,6 +9,7 @@ var selectedIndex = 0;
 var loadlist_loadCheck = 0;
 var slotMax = 200;
 var db;
+var language = "kr";
 
 class Mob {
     constructor(target, img, imgG, grey) {
@@ -102,7 +103,10 @@ function init() {
                         mobList.splice(selectedIndex, 1);
                         mobList.splice(index, 0, move);
                         deselect();
-                        showAlert("이동 [" + move.target.name + "]");
+                        showAlert((language == "kr" ?
+                                "이동" :
+                                "Moved.")
+                                + " [" + move.target.name + "]");
                     }
                     else {
                         mobList[index].grey = !(mobList[index].grey);
@@ -116,7 +120,9 @@ function init() {
 
         if (boolSelected) {
             deselect();
-            showAlert("선택 해제");
+            showAlert(language == "kr" ?
+                    "선택 해제" :
+                    "Deselected.");
         }
     });
     
@@ -148,8 +154,11 @@ function init() {
 
                         [mobList[selectedIndex], mobList[index]] = [mobList[index], mobList[selectedIndex]];
                         deselect();
-                        redraw();
-                        showAlert("교체 [" + mobList[index].target.name + " ↔ " + mobList[selectedIndex].target.name + "]");
+                        redraw();                        
+                        showAlert((language == "kr" ?
+                                "교체" :
+                                "Replaced.")
+                                + " [" + mobList[index].target.name + " ↔ " + mobList[selectedIndex].target.name + "]");
                     }
                     else {
                         selectedIndex = index;
@@ -165,7 +174,10 @@ function init() {
                         selectedImage.style.zIndex = "4";
                         divCanvas.appendChild(selectedImage);
 
-                        showAlert("선택 [" + mobList[index].target.name + "]");
+                        showAlert((language == "kr" ?
+                                "선택" :
+                                "Selected.")
+                                + " [" + mobList[index].target.name + "]");
                     }
                     return;
                 }
@@ -174,7 +186,9 @@ function init() {
 
         if (boolSelected) {
             deselect();
-            showAlert("선택 해제");
+            showAlert(language == "kr" ?
+                    "선택 해제" :
+                    "Deselected.");
         }
     });
 
@@ -314,7 +328,9 @@ function addMobToList(mob)
 {
     if (mobCount === slotMax)
     {
-        showAlert("더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)");
+        showAlert(language == "kr" ?
+                "더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)" :
+                "Cannot Add More. (Max " + slotMax + "Slots)");
         return;
     }
 
@@ -331,7 +347,9 @@ function addMobToList(mob)
     var target = db.find(e => e.name == mobName)
     if (!target)
     {
-        showAlert("추가할 몬스터가 없습니다.");
+        showAlert(language == "kr" ?
+                "추가할 몬스터가 없습니다." :
+                "No Mobs to be Added.");
         return;
     }
     
@@ -368,7 +386,10 @@ function addMobToList(mob)
             }
             else redraw();
 
-            showAlert("추가되었습니다. [" + target.name + "]");
+            showAlert((language == "kr" ?
+                    "추가되었습니다.":
+                    "Added.")
+                    + " [" + target.name + "]" );
         }
     }
 
@@ -392,7 +413,9 @@ function addCustomMobToList() // 커스텀 몹
 {
     if (mobCount === slotMax)
     {
-        showAlert("더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)");
+        showAlert(language == "kr" ?
+                "더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)" :
+                "Cannot Add More. (Max " + slotMax + "Slots)");
         return;
     }
 
@@ -410,7 +433,9 @@ function addCustomMobToList() // 커스텀 몹
 
         if (!(file.type.split('/')[0] == "image"))
         {
-            showAlert("이미지 파일이 아닙니다.");
+            showAlert(language == "kr" ?
+                    "이미지 파일이 아닙니다." :
+                    "This is not Image File.");
             return;
         }
 
@@ -420,7 +445,9 @@ function addCustomMobToList() // 커스텀 몹
             img.src = r.result;
 
             img.onload = () => {
-                showAlert("몬스터 이미지를 변환 중입니다.");
+                showAlert(language == "kr" ?
+                        "몬스터 이미지를 변환 중입니다." :
+                        "Converting Images to fit.");
                 var img_resize = new Image();
                 img_resize.src = edit_resize(img);
 
@@ -444,7 +471,10 @@ function addCustomMobToList() // 커스텀 몹
                         }
                         else redraw();
 
-                        showAlert("추가되었습니다. [" + mobName + "]");
+                        showAlert((language == "kr" ?
+                        "추가되었습니다.":
+                        "Added.")
+                        + " [" + mobName + "]" );
                     }
                 }
             }
@@ -456,7 +486,9 @@ function delMobToList()
 {
     if (mobCount === 0)
     {
-        showAlert("삭제할 몬스터가 없습니다.");
+        showAlert(language == "kr" ?
+                "삭제할 몬스터가 없습니다." :
+                "No Mobs to be Deleted.");
         return;
     }
 
@@ -470,7 +502,10 @@ function delMobToList()
     }
     mobCount--;
     redraw();
-    showAlert("삭제되었습니다. [" + mob.target.name + "]");
+    showAlert((language == "kr" ?
+            "삭제되었습니다." :
+            "Deleted.")
+            + " [" + mob.target.name + "]" );
 }
 
 function save()
@@ -481,12 +516,16 @@ function save()
     link.setAttribute("download", "monster_collection");
     link.click();
     URL.revokeObjectURL(link.href);
-    showAlert("이미지로 저장합니다.");
+    showAlert(language == "kr" ?
+            "이미지로 저장합니다." :
+            "Save to Image.");
 }
 
 function reset()
 {
-    showAlert("초기화되었습니다.");
+    showAlert(language == "kr" ?
+            "초기화되었습니다." :
+            "Cleared.");
     
     mobList.length = 0;
     mobCount = 0;
@@ -534,7 +573,9 @@ function rowsAutoIncrease(count) // calls redraw() in setRows()
 
 function setElite()
 {
-    showAlert("엘리트 몬스터를 불러옵니다.");
+    showAlert(language == "kr" ?
+            "엘리트 몬스터를 불러옵니다." :
+            "Loading Elite Monsters.");
     
     loadlist_loadCheck = 0;
     var loadArray = new Array();
@@ -559,7 +600,9 @@ function savelist()
 {
     if (mobCount === 0)
     {
-        showAlert("내보낼 몬스터가 없습니다.");
+        showAlert(language == "kr" ?
+                "내보낼 몬스터가 없습니다." :
+                "No Mobs to be Exported.");
         return;
     }
 
@@ -593,7 +636,9 @@ function savelist()
     link.setAttribute("download", "몬스터컬렉션_" + date);
     link.click();
     URL.revokeObjectURL(link.href);
-    showAlert("텍스트로 리스트를 내보냅니다.");
+    showAlert(language == "kr" ?
+            "텍스트로 리스트를 내보냅니다." :
+            "List Exported to Txt.");
 }
 
 function loadlist()
@@ -608,7 +653,9 @@ function loadlist()
 
         if (!(file.type == "text/plain"))
         {
-            showAlert("텍스트 파일이 아닙니다.");
+            showAlert(language == "kr" ?
+                    "텍스트 파일이 아닙니다." :
+                    "This is not Text File.");
             return;
         }
         
@@ -621,7 +668,9 @@ function loadlist()
 
 function readlist(list)
 {
-    showAlert("몬스터 정보를 확인하는 중입니다.");
+    showAlert(language == "kr" ?
+            "몬스터 정보를 확인하는 중입니다." :
+            "Checking Mob Infos.");
     var t = list.split('\n', slotMax);
     var len = t.length; //목록 길이
     if (len == 0) return;
@@ -668,7 +717,9 @@ function readlist(list)
 
     if (loadArray.length === 0)
     {
-        showAlert("올바른 파일이 아니거나, 몬스터 정보가 없습니다.");
+        showAlert(language == "kr" ?
+                "올바른 파일이 아니거나, 몬스터 정보가 없습니다." :
+                "This is not the right file, or there is no mob infos.");
         return;
     }
 
@@ -702,12 +753,17 @@ function loadlist_loadMob(index, target, grey, count)
             }
             mobList[index] = new Mob(target, mob[0], mob[1], grey);
             mobCount++;
-            showAlert("몬스터 이미지를 불러오는 중입니다. [" + ++loadlist_loadCheck + " / " + count + "]");
+            showAlert((language == "kr" ?
+                    "몬스터 이미지를 불러오는 중입니다." :
+                    "Loading Monster Image.")
+                    + " [" + ++loadlist_loadCheck + " / " + count + "]");
 
             if (loadlist_loadCheck == count)
             {
                 rowsAutoIncrease(count);
-                showAlert("불러오기가 완료되었습니다.");
+                showAlert(language == "kr" ?
+                        "불러오기가 완료되었습니다." :
+                        "All Loaded.");
             }
         }
     }
@@ -779,8 +835,8 @@ function setLanguages(server) {
         },
     };
 
-    var language = "kr";
     if (server != "KMS") language = "en";
+    else language = "kr";
 
     var queryStr = "";
     const elements = Object.keys(languages["kr"]);

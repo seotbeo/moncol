@@ -146,7 +146,7 @@ canvas {
 }
 
 .alertarea_out {
-  width: 510px;
+  width: 666px;
   height: 2rem;
   background: #ffffff;
   text-align: center;
@@ -154,7 +154,7 @@ canvas {
 }
 
 .alertarea_in {
-  width: 510px;
+  width: 666px;
   height: 2rem;
   margin: auto;
   padding: 1rem 0rem 0rem 0rem;
