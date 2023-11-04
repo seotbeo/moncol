@@ -22,7 +22,7 @@ class Mob {
 function init() {
     setDB("KMS");
     // UI 리소스 로딩
-    var ui_src = ["resources/ui_none.png", //0
+    const ui_src = ["resources/ui_none.png", //0
                 "resources/ui_1star.png", //1
                 "resources/ui_2star.png", //2
                 "resources/ui_3star.png", //3
@@ -719,5 +719,66 @@ function deselect() {
 function setServer(server) {
     reset();
     setDB(server);
+    setLanguages(server);
     showAlert("Set the data to " + server);
+}
+
+function setLanguages(server) {
+    const prefix = '[id^="';
+    const suffix = '"]';
+    const languages = {
+        kr: {
+            label_serv: "서버",
+            label_grey: "흑백으로 추가",
+            label_rows: "슬롯",
+            label_stars: "별",
+            button_elite: "기본 엘리트 몬스터 불러오기",
+            button_localimg: "로컬 이미지를 몬스터로 추가",
+            button_add: "추가",
+            button_delete: "삭제",
+            button_reset: "초기화",
+            button_save: "이미지저장",
+            button_savelist: "내보내기",
+            button_loadlist: "불러오기",
+            memo: "메모",
+            search: "몬스터 이름을 입력하세요",
+        },
+        en: {
+            label_serv: "Server",
+            label_grey: "Not Collected",
+            label_rows: "Slots",
+            label_stars: "Stars",
+            button_elite: "Load Elite Mobs",
+            button_localimg: "Add Mob with Local Image",
+            button_add: "Add",
+            button_delete: "Delete",
+            button_reset: "Clear",
+            button_save: "Save Image",
+            button_savelist: "Export",
+            button_loadlist: "Import",
+            memo: "Memo",
+            search: "Input Monster Name",
+        },
+    };
+
+    var language = "kr";
+    if (server != "KMS") language = "en";
+
+    var queryStr = "";
+    const elements = Object.keys(languages["kr"]);
+    for (let i = 0; i < elements.length;) {
+        queryStr = queryStr + prefix + elements[i] + suffix;
+        if (++i < elements.length) {
+            queryStr += ", ";
+        }
+    }
+
+    const textElements = document.querySelectorAll(queryStr);
+    textElements.forEach((element) => {
+        const textId = element.id;
+        if (element.tagName.toLowerCase() == "input") {
+            element.placeholder = languages[language][textId];
+        }
+        else element.textContent = languages[language][textId];
+    });
 }

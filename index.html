@@ -26,7 +26,7 @@
     </head>
     <body onload="init();">
         <div id="mainArea">            
-            <label for="serv">서버</label>
+            <label id="label_serv" for="serv">서버</label>
             <select name="serv" id="serv" onchange="setServer(this.value);"></select>
             <div id="mainCanvas">
                 <canvas id="preview" width="666" height="1"></canvas>
@@ -41,20 +41,20 @@
                 </section>
                 <div style="margin-top: 1rem;">
                     <div style="display:inline-block; width:250px; text-align:left;">
-                        <label for="grey">흑백으로 추가</label>
+                        <label id="label_grey" for="grey">흑백으로 추가</label>
                         <input type="checkbox" id="grey" onclick="checkboxGrey(event)" />
-                        <label for="rows">슬롯</label>
+                        <label id="label_rows" for="rows">슬롯</label>
                         <select name="rows" id="rows" onchange="setRows(this.value);"></select>
                     </div>
                     <div style="display:inline-block; width:250px; text-align:right;">
-                        <button type="button" class="bigButton" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
+                        <button type="button" id="button_elite" class="bigButton" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
                     </div>
                 </div>
                 <div>
                     <div style="display:inline-block; width:200px;">
                     </div>
                     <div style="display:inline-block; width:300px; text-align:right;">
-                        <label for="stars">별</label>
+                        <label id="label_stars" for="stars">별</label>
                         <select name="stars" id="stars">
                             <option value="1" selected="selected">1</option>
                             <option value="2">2</option>
@@ -64,19 +64,19 @@
                             <option value="6">S</option>
                             <option value="7">E</option>
                         </select>
-                        <button type="button" style="width: 200px; margin-left: 15px;" onclick="addCustomMobToList(1);">로컬 이미지를 몬스터로 추가</button>
+                        <button type="button" id="button_localimg" style="width: 200px; margin-left: 15px;" onclick="addCustomMobToList(1);">로컬 이미지를 몬스터로 추가</button>
                     </div>
                 </div>
                 <div>
-                    <button type="button" onclick="addMobToList();">추가</button>
-                    <button type="button" onclick="delMobToList();">삭제</button>
-                    <button type="button" onclick="reset();">초기화</button>
-                    <button type="button" onclick="save();">이미지저장</button>
-                    <button type="button" onclick="savelist();">내보내기</button>
-                    <button type="button" onclick="loadlist();">불러오기</button>
+                    <button type="button" id="button_add" onclick="addMobToList();">추가</button>
+                    <button type="button" id="button_delete" onclick="delMobToList();">삭제</button>
+                    <button type="button" id="button_reset" onclick="reset();">초기화</button>
+                    <button type="button" id="button_save" onclick="save();">이미지저장</button>
+                    <button type="button" id="button_savelist" onclick="savelist();">내보내기</button>
+                    <button type="button" id="button_loadlist" onclick="loadlist();">불러오기</button>
                 </div>
                 <section>
-                    <input type="text" id="search" placeholder="몬스터 이름을 입력하세요." autocomplete="off" />
+                    <input type="text" id="search" placeholder="몬스터 이름을 입력하세요" autocomplete="off" />
                     <div class="autocomplete"></div>
                 </section>
             </div>
