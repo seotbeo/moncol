@@ -42,7 +42,10 @@ function init() {
                 "resources/ui_tooltip_sw.png", //17
                 "resources/ui_tooltip_s.png", //18
                 "resources/ui_tooltip_se.png", //19
-                "resources/ui_selected.gif"]; //20
+                "resources/ui_selected.gif", //20
+                "resources/ui_bg_tag_G.png", //21
+                "resources/ui_bg_tag_J.png", //22
+                "resources/ui_bg_tag_T.png"]; //23
 
     var loadedCount = 0;
 
@@ -253,12 +256,28 @@ function redraw()
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clearTooltip();
 
-    ctx.drawImage(ui[8], 0, 0);
+    ctx.drawImage(ui[8], 0, 0); //배경
     for (let i = 0; i < bg_c_count; i++)
     {
         ctx.drawImage(ui[9], 0, ui[8].height + ui[9].height * i);
     }
     ctx.drawImage(ui[10], 0, ui[8].height + ui[9].height * bg_c_count);
+
+    var serv = document.getElementById("serv").value; //전체보기 서버별로 번역
+    switch (serv) {
+        case "GMS":
+        case "MSEA":
+            ctx.drawImage(ui[21], 10, 10);
+            break;
+        case "JMS":
+            ctx.drawImage(ui[22], 10, 10);
+            break;
+        case "TMS":
+            ctx.drawImage(ui[23], 10, 10);
+            break;
+        default:
+            break;
+    }
 
     for (let i = 0; i < rows; i++)
     {
