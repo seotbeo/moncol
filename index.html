@@ -31,10 +31,11 @@
             <div id="mainCanvas">
                 <canvas id="preview" width="666" height="1"></canvas>
                 <canvas id="tooltip" width="666" height="1"></canvas>
+                <canvas id="memoCanvas" width="666" height="127"></canvas>
             </div>
             <div id="belowCanvas">
                 <div style="margin-top: 1rem;">
-                    <input type="text" id="memo" placeholder="메모" autocomplete="off" />
+                    <input type="text" id="memo" placeholder="메모" autocomplete="off" onkeyup="drawMemo(this.value);"/>
                 </div>
                 <section class="alertarea_out">
                     <div class="alertarea_in"></div>
@@ -42,7 +43,7 @@
                 <div style="margin-top: 1rem;">
                     <div style="display:inline-block; width:250px; text-align:left;">
                         <label id="label_grey" for="grey">흑백으로 추가</label>
-                        <input type="checkbox" id="grey" onclick="checkboxGrey(event)" />
+                        <input type="checkbox" id="grey" onclick="checkboxGrey(event);" />
                         <label id="label_rows" for="rows">슬롯</label>
                         <select name="rows" id="rows" onchange="setRows(this.value);"></select>
                     </div>

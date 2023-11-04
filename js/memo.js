@@ -1,19 +1,9 @@
-const $memo = document.querySelector("#memo");
-
-$memo.onkeyup = () => {
-    redraw();
-}
-
-function redrawMemo()
-{
-    const memo = $memo.value.trim();
-    drawMemo(memo);
-}
-
-function drawMemo(memo)
-{
-    const canvas = document.getElementById("preview");
+function drawMemo(value) {
+    clearMemo();
+    
+    const canvas = document.getElementById("memoCanvas");
     const ctx = canvas.getContext("2d");
+    const memotext = value.trim();
 
     ctx.font = "17px MaplestoryL";
     ctx.fillStyle = "#eeff00";
@@ -21,5 +11,11 @@ function drawMemo(memo)
     ctx.letterSpacing = "1px";
     ctx.strokeStyle = "#eeff00";
 
-    ctx.fillText(memo, 635, 35, 525);
+    ctx.fillText(memotext, 635, 35, 525);
+}
+
+function clearMemo() {
+    const canvas = document.getElementById("memoCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }

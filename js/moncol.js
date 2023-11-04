@@ -162,7 +162,7 @@ function init() {
                         selectedImage.style.position = "absolute";
                         selectedImage.style.top = 49 + i * 74 + "px";
                         selectedImage.style.left = 29 + j * 74 + "px";
-                        selectedImage.style.zIndex = "3";
+                        selectedImage.style.zIndex = "4";
                         divCanvas.appendChild(selectedImage);
 
                         showAlert("선택 [" + mobList[index].target.name + "]");
@@ -291,7 +291,6 @@ function redraw()
             ctx.drawImage(ui[0], 32 + j * 74, 52 + i * 74);
         }
     }
-    redrawMemo();
 }
 
 function drawMob(index, j, i)
