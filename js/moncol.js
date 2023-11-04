@@ -531,7 +531,7 @@ function reset()
     mobCount = 0;
     setRowsSelector(6);
     setRows(6);
-    deselect();
+    if (boolSelected) deselect();
 }
 
 function checkboxGrey(event)
