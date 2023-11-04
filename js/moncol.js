@@ -616,8 +616,10 @@ function savelist()
         str += " : ";
         str += mobList[i].target.name;
         str += " / ";
-        if (["빈칸", "空位", "空白", "Blank"].includes(mobList[i].target.name)) str += "등록";
-        else str += mobList[i].grey === true ? "미등록" : "등록";
+        if (["빈칸", "空位", "空白", "Blank"].includes(mobList[i].target.name)) str += (language == "kr" ? "빈칸" : "Blank");
+        else str += (mobList[i].grey === true ?
+            (language == "kr" ? "미등록" : "Uncollected") :
+            (language == "kr" ? "등록" : "Collected"));
         str += "\n";
         outputStr += str;
     }
@@ -634,7 +636,7 @@ function savelist()
     const link = document.createElement("a");
     const file = new Blob([outputStr], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
-    link.setAttribute("download", "몬스터컬렉션_" + date);
+    link.setAttribute("download", (language == "kr" ? "몬스터 컬렉션_" : "Monster Collection_") + date);
     link.click();
     URL.revokeObjectURL(link.href);
     showAlert(language == "kr" ?
@@ -700,11 +702,12 @@ function readlist(list)
         }
         
         var collect = l[1].trim(); //collect
-        if (collect === "미등록")
+        if (collect === "미등록" || collect === "Uncollected")
         {
             var grey = true;
         }
-        else if (collect === "등록")
+        else if (collect === "등록" || collect === "Collected" ||
+                collect === "빈칸" || collect === "Blank")
         {
             var grey = false;
         }
