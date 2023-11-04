@@ -52,6 +52,7 @@ $search.onkeyup = (event) => {
 
 const showList = (data, value, nowIndex) => {
   // 정규식으로 변환
+    value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${value})`, "gi");
     $autoComplete.innerHTML = data
         .map(
