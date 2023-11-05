@@ -7,7 +7,6 @@ var greyCheck = false;
 var boolSelected = false;
 var selectedIndex = 0;
 var loadlist_loadCheck = 0;
-//var slotMax = 200; // loadAll()에서 바뀜, setRowsSelector()와 reset()에서 원래 값 유지 필요
 const slotMax = 1320;
 var db;
 var language = "kr";
@@ -238,17 +237,6 @@ function init() {
     var serv4 = document.createElement("option");
     serv4.value = serv4.innerHTML = "MSEA"
     serverSelector.appendChild(serv4);
-
-    // rows 선택 콤보박스
-    const rowsSelector = document.getElementById('rows');
-    for (let i = 3; i <= parseInt(slotMax / cols); i++)
-    {
-        var option = document.createElement("option");
-        option.value = i;
-        option.innerHTML = (i * cols) + "칸";
-        rowsSelector.appendChild(option);
-    }
-    rowsSelector.options[rows - 3].selected = true;
 }
 
 function redraw()
@@ -853,7 +841,6 @@ function setLanguages(server) {
         kr: {
             label_serv: "서버",
             label_grey: "흑백으로 추가",
-            label_rows: "슬롯",
             label_stars: "별",
             button_elite: "기본 엘리트 몬스터 불러오기",
             button_localimg: "로컬 이미지를 몬스터로 추가",
@@ -870,7 +857,6 @@ function setLanguages(server) {
         en: {
             label_serv: "Server",
             label_grey: "Add with Uncollected",
-            label_rows: "Slots",
             label_stars: "Stars",
             button_elite: "Load Elite Mobs",
             button_localimg: "Add Mob with Local Image",
