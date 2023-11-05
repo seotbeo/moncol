@@ -44,15 +44,24 @@
                     <div style="display:inline-block; width:250px; text-align:left;">
                         <label id="label_grey" for="grey">흑백으로 추가</label>
                         <input type="checkbox" id="grey" onclick="checkboxGrey(event);" />
-                        <label id="label_rows" for="rows">슬롯</label>
-                        <select name="rows" id="rows" onchange="setRows(this.value);"></select>
                     </div>
                     <div style="display:inline-block; width:250px; text-align:right;">
-                        <button type="button" id="button_elite" class="bigButton" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
+                        <button type="button" id="button_elite" style="width: 200px; margin-left: 30px;" onclick="setElite();">기본 엘리트 몬스터 불러오기</button>
                     </div>
                 </div>
                 <div>
-                    <div style="display:inline-block; width:200px;">
+                    <div style="display:inline-block; width:250px; text-align:left;">
+                        <label id="label_slot">현재 슬롯 개수: 48칸</label>
+                        <!-- <select name="rows" id="rows" onchange="setRows(this.value);"></select>-->
+                        <button type="button" id="button_slotminus" style="width: 35px;" onclick="slotminus();">-</button>
+                        <button type="button" id="button_slotplus" style="width: 35px;" onclick="slotplus();">+</button>
+                    </div>
+                    <div style="display:inline-block; width:250px; text-align:right;">
+                        <button type="button" id="button_loadall" style="width: 200px; margin-left: 15px;" onclick="loadAll();">모든 몬스터 불러오기</button>
+                    </div>
+                </div>
+                <div>
+                    <div style="display:inline-block; width:200px; text-align:left;">
                     </div>
                     <div style="display:inline-block; width:300px; text-align:right;">
                         <label id="label_stars" for="stars">별</label>

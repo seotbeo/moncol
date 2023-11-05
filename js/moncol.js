@@ -7,7 +7,8 @@ var greyCheck = false;
 var boolSelected = false;
 var selectedIndex = 0;
 var loadlist_loadCheck = 0;
-var slotMax = 200;
+//var slotMax = 200; // loadAll()에서 바뀜, setRowsSelector()와 reset()에서 원래 값 유지 필요
+const slotMax = 1320;
 var db;
 var language = "kr";
 
@@ -330,7 +331,7 @@ function addMobToList(mob)
     {
         showAlert(language == "kr" ?
                 "더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)" :
-                "Cannot Add More. (Max " + slotMax + "Slots)");
+                "Cannot Add More. (Max " + slotMax + " Slots)");
         return;
     }
 
@@ -382,7 +383,7 @@ function addMobToList(mob)
 
             if (mobCount > rows * cols)
             {
-                rowsAutoIncrease(mobCount);
+                setRowsByMobCount(mobCount);
             }
             else redraw();
 
@@ -415,7 +416,7 @@ function addCustomMobToList() // 커스텀 몹
     {
         showAlert(language == "kr" ?
                 "더 이상 추가할 수 없습니다. (최대 " + slotMax + "칸)" :
-                "Cannot Add More. (Max " + slotMax + "Slots)");
+                "Cannot Add More. (Max " + slotMax + " Slots)");
         return;
     }
 
@@ -467,7 +468,7 @@ function addCustomMobToList() // 커스텀 몹
 
                         if (mobCount > rows * cols)
                         {
-                            rowsAutoIncrease(mobCount);
+                            setRowsByMobCount(mobCount);
                         }
                         else redraw();
 
@@ -529,7 +530,6 @@ function reset()
     
     mobList.length = 0;
     mobCount = 0;
-    setRowsSelector(6);
     setRows(6);
     if (boolSelected) deselect();
 }
@@ -556,20 +556,65 @@ function setRows(value)
         mobList.length = max;
         mobCount = max;
     }
-
+    setSlotLabel();
     redraw();
 }
 
-function setRowsSelector(rows)
+function setRowsByMobCount(count) // calls redraw() in setRows()
 {
-    const rowsSelector = document.getElementById('rows');
-    rowsSelector.options[rows - 3].selected = true;
+    setRows(Math.min(Math.max(3, Math.ceil(count / 8)), slotMax));
 }
 
-function rowsAutoIncrease(count) // calls redraw() in setRows()
-{
-    setRowsSelector(Math.max(3,Math.ceil(count/8)));
-    setRows(Math.max(3,Math.ceil(count/8)));
+function setSlotLabel() {
+    const label = document.getElementById('label_slot');
+    label.innerText = language == "kr" ?
+                    "현재 슬롯 개수: " + (rows * cols) + "칸" :
+                    "Current Slots: " + (rows * cols);
+}
+
+function slotminus() {
+    var r = rows;
+    if (--r < 3) {
+        r++;
+        showAlert(language == "kr" ?
+                "더 이상 슬롯을 줄일 수 없습니다. (최소 24칸)" :
+                "Cannot Remove More. (Min 24 Slots)");
+        return;
+    }
+    showAlert(language == "kr" ?
+            "슬롯이 한 줄 감소했습니다." :
+            "Removed 1 Line.");
+    if (boolSelected && selectedIndex >= r * cols) deselect();
+    setRows(r);
+}
+
+function slotplus() {
+    var r = rows;
+    if (++r * cols > slotMax) {
+        r--;
+        showAlert(language == "kr" ?
+                "더 이상 슬롯을 추가할 수 없습니다. (최대 " + slotMax + "칸)" :
+                "Cannot Add More. (Max " + slotMax + " Slots)");
+        return;
+    }
+    showAlert(language == "kr" ?
+            "슬롯이 한 줄 추가되었습니다." :
+            "Added 1 Line.");
+    setRows(r);
+}
+
+function loadAll() {
+    loadlist_loadCheck = 0;
+    mobList.length = 0;
+    mobCount = 0;
+    var index = 0;
+    var length = db.length - 1;
+    for (const mob of db) {
+        if (mob.ID == 9100049) {
+            continue;
+        }
+        loadlist_loadMob(index++, mob, greyCheck, length);
+    }
 }
 
 function setElite()
@@ -586,7 +631,7 @@ function setElite()
         if (!target) {
             target = db.find(e => ["빈칸", "空位", "空白", "Blank"].includes(e.name));
         }
-        loadArray.push({target: target, grey: false});
+        loadArray.push({target: target, grey: greyCheck});
     }
     
     mobList.length = 0;
@@ -764,7 +809,7 @@ function loadlist_loadMob(index, target, grey, count)
 
             if (loadlist_loadCheck == count)
             {
-                rowsAutoIncrease(count);
+                setRowsByMobCount(count);
                 showAlert(language == "kr" ?
                         "불러오기가 완료되었습니다." :
                         "All Loaded.");
@@ -795,9 +840,9 @@ function deselect() {
 }
 
 function setServer(server) {
-    reset();
     setDB(server);
     setLanguages(server);
+    reset();
     showAlert("Set the data to " + server);
 }
 
@@ -812,6 +857,7 @@ function setLanguages(server) {
             label_stars: "별",
             button_elite: "기본 엘리트 몬스터 불러오기",
             button_localimg: "로컬 이미지를 몬스터로 추가",
+            button_loadall: "모든 몬스터 불러오기",
             button_add: "추가",
             button_delete: "삭제",
             button_reset: "초기화",
@@ -823,11 +869,12 @@ function setLanguages(server) {
         },
         en: {
             label_serv: "Server",
-            label_grey: "Not Collected",
+            label_grey: "Add with Uncollected",
             label_rows: "Slots",
             label_stars: "Stars",
             button_elite: "Load Elite Mobs",
             button_localimg: "Add Mob with Local Image",
+            button_loadall: "Load All Mobs",
             button_add: "Add",
             button_delete: "Delete",
             button_reset: "Clear",
