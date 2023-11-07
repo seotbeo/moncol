@@ -130,13 +130,17 @@ function init() {
                                 "이동" :
                                 "Moved.")
                                 + " [" + move.target.name + "]");
+                        redraw();
+                        drawTooltip(move.target.name, x, y, canvas.width, canvas.height);
+                        return;
                     }
                     else {
                         mobList[index].grey = !(mobList[index].grey);
+                        redraw();
+                        drawTooltip(mobList[index].target.name, x, y, canvas.width, canvas.height);
                         showAlert(mobList[index].target.name);
+                        return;
                     }
-                    redraw();
-                    return;
                 }
             }
         }
@@ -177,7 +181,8 @@ function init() {
 
                         [mobList[selectedIndex], mobList[index]] = [mobList[index], mobList[selectedIndex]];
                         deselect();
-                        redraw();                        
+                        redraw();
+                        drawTooltip(mobList[index].target.name, x, y, canvas.width, canvas.height);
                         showAlert((language == "kr" ?
                                 "교체" :
                                 "Replaced.")
