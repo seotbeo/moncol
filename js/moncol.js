@@ -74,6 +74,18 @@ function init() {
         }
     }
     
+    // db init
+    const array_db_oversea = [dbj, dbt, dbs];
+    const beyondEventMobs_min = 9010124;
+    const beyondEventMobs_max = 9010148;
+    for (var item of array_db_oversea) {
+        var array_t = item.filter(e => e.ID >= beyondEventMobs_min && e.ID <= beyondEventMobs_max);
+        for (var t of array_t) {
+            t.src = t.src.replace(".png", "_s.png");
+            console.log(t.src);
+        }
+    }
+
     // 캔버스 영역 클릭 이벤트
     const canvas = document.getElementById("tooltip");
     canvas.addEventListener('click', (event) => {
