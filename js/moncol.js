@@ -75,15 +75,22 @@ function init() {
     }
     
     // db init
-    const array_db_oversea = [dbj, dbt, dbs];
+    const array_db_oversea = [dbj, dbt, dbs, dbg];
+    // beyond event mobs
     const beyondEventMobs_min = 9010124;
     const beyondEventMobs_max = 9010148;
     for (var item of array_db_oversea) {
         var array_t = item.filter(e => e.ID >= beyondEventMobs_min && e.ID <= beyondEventMobs_max);
         for (var t of array_t) {
             t.src = t.src.replace(".png", "_s.png");
-            console.log(t.src);
         }
+    }
+    // gms mobs
+    const Stone_Goblin_Guardian = 8144008;
+    const Party_Punk_Slime = 9010128;
+    var array_g = dbg.filter(e => e.ID == Stone_Goblin_Guardian || e.ID == Party_Punk_Slime);
+    for (var t of array_g) {
+        t.src = t.src.replace(".png", "_g.png");
     }
 
     // 캔버스 영역 클릭 이벤트
@@ -249,6 +256,9 @@ function init() {
     var serv4 = document.createElement("option");
     serv4.value = serv4.innerHTML = "MSEA"
     serverSelector.appendChild(serv4);
+    var serv5 = document.createElement("option");
+    serv5.value = serv5.innerHTML = "GMS"
+    serverSelector.appendChild(serv5);
 }
 
 function redraw()

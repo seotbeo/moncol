@@ -81,9 +81,9 @@ function setDB(server) {
         case "MSEA":
             db = dbs;
             break;
-        /*case "GMS":
+        case "GMS":
             db = dbg;
-            break;*/
+            break;
         case "TMS":
             db = dbt;
             break;
