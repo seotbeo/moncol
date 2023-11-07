@@ -46,7 +46,11 @@ function init() {
                 "resources/ui_selected.gif", //20
                 "resources/ui_bg_tag_G.png", //21
                 "resources/ui_bg_tag_J.png", //22
-                "resources/ui_bg_tag_T.png"]; //23
+                "resources/ui_bg_tag_T.png", //23
+                "resources/ui_e_1star.png", //24
+                "resources/ui_e_2star.png", //25
+                "resources/ui_e_3star.png", //26
+                "resources/ui_e_s.png"]; //27
 
     var loadedCount = 0;
 
@@ -332,6 +336,9 @@ function drawMob(index, j, i)
     canvas.setAttribute("image-rendering", "pixelated");
     ctx.drawImage(v === true ? mobList[index].imgG : mobList[index].img, 71 - Math.ceil(w/2) + j * 74, 91 - Math.ceil(h/2) + i * 74, w, h);
     if (target.star == 0) ctx.drawImage(ui[0], 32 + j * 74, 52 + i * 74);
+    else if (target.isBeyondEventMob) {
+        ctx.drawImage(ui[target.star + 23], 34 + j * 74, 54 + i * 74);
+    }
     else ctx.drawImage(ui[target.star], 34 + j * 74, 54 + i * 74);
 }
 
