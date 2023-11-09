@@ -77,7 +77,7 @@ function init() {
             ui[i].onload = uiLoaded;
         }
     }
-    
+
     // db init
     const array_db_oversea = [dbj, dbt, dbs, dbg];
     // beyond event mobs
@@ -103,8 +103,8 @@ function init() {
         var x = event.offsetX;
         var y = event.offsetY;
         var count = 0;
-        
-        if (y < canvas.top && y > canvas.top + canvas.height 
+
+        if (y < canvas.top && y > canvas.top + canvas.height
             && x < canvas.left && x > canvas.left + canvas.width)
         {
             return;
@@ -152,15 +152,15 @@ function init() {
                     "Deselected.");
         }
     });
-    
+
     // 캔버스 영역 우클릭 이벤트
     canvas.addEventListener('contextmenu', (event) => {
         event.preventDefault(); // 캔버스 영역 우클릭 메뉴 방지
         var x = event.offsetX;
         var y = event.offsetY;
         var count = 0;
-        
-        if (y < canvas.top && y > canvas.top + canvas.height 
+
+        if (y < canvas.top && y > canvas.top + canvas.height
             && x < canvas.left && x > canvas.left + canvas.width)
         {
             return;
@@ -226,7 +226,7 @@ function init() {
         var y = event.offsetY;
         var count = 0;
 
-        if (y < canvas.top && y > canvas.top + canvas.height 
+        if (y < canvas.top && y > canvas.top + canvas.height
             && x < canvas.left && x > canvas.left + canvas.width)
         {
             return;
@@ -281,7 +281,7 @@ function redraw()
     var count = mobCount * 1;
     var index = 0;
     var bg_c_count = parseInt(rows) - 2;
-    
+
     //canvas.width = canvasTooltip.width = ui[8].width;
     canvas.height = canvasTooltip.height = canvasSelect.height = ui[8].height + ui[9].height * bg_c_count + ui[10].height;
     divCanvas.style.width = canvas.width + "px";
@@ -375,7 +375,7 @@ function addMobToList(mob)
                 "No Mobs to be Added.");
         return;
     }
-    
+
     document.querySelector("#search").value = "";
     var mob = new Array();
     var mob_src = [target.src.replace(".png", "_fix.png").replace("mob", "mob\\fix")];
@@ -393,7 +393,7 @@ function addMobToList(mob)
                 mob[i].imageSmoothingEnabled = mob[i].oImageSmoothingEnabled = mob[i].mozImageSmoothingEnabled = mob[i].webkitImageSmoothingEnabled = false;
                 mob[i].setAttribute("image-rendering", "pixelated");
             }
-            
+
             if (boolSelected) {
                 mobCount++;
                 mobList.splice(selectedIndex, 0, new Mob(target, mob[0], mob[1], greyCheck));
@@ -533,8 +533,17 @@ function delMobToList()
 
 function save()
 {
-    const canvas = document.getElementById("preview");
+    const preview = document.getElementById("preview");
+    const memo = document.getElementById("memo");
     const link = document.createElement("a");
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const w = preview.width;
+    const h = preview.height;
+    canvas.width = w;
+    canvas.height = h;
+    ctx.drawImage(preview, 0, 0);
+    ctx.drawImage(memo, 0, 0);
     link.href = canvas.toDataURL();
     link.setAttribute("download", "monster_collection");
     link.click();
@@ -549,7 +558,7 @@ function reset()
     showAlert(language == "kr" ?
             "초기화되었습니다." :
             "Cleared.");
-    
+
     mobList.length = 0;
     mobCount = 0;
     setRows(6);
@@ -558,7 +567,7 @@ function reset()
 
 function checkboxGrey(event)
 {
-    if (event.target.checked) 
+    if (event.target.checked)
     {
         greyCheck = true;
     }
@@ -644,7 +653,7 @@ function setElite()
     showAlert(language == "kr" ?
             "엘리트 몬스터를 불러옵니다." :
             "Loading Elite Monsters.");
-    
+
     loadlist_loadCheck = 0;
     var loadArray = new Array();
 
@@ -655,7 +664,7 @@ function setElite()
         }
         loadArray.push({target: target, grey: greyCheck});
     }
-    
+
     mobList.length = 0;
     mobCount = 0;
 
@@ -728,7 +737,7 @@ function loadlist()
                     "This is not Text File.");
             return;
         }
-        
+
         r.readAsText(file,"UTF-8");
         r.onload = () => {
             readlist(r.result);
@@ -767,7 +776,7 @@ function readlist(list)
         {
             continue;
         }
-        
+
         var collect = l[1].trim(); //collect
         if (collect === "미등록" || collect === "Uncollected")
         {
@@ -782,7 +791,7 @@ function readlist(list)
         {
             continue;
         }
-        
+
         loadArray.push({target: target, grey: grey});
     }
 
