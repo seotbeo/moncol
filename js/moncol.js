@@ -543,7 +543,7 @@ function save()
     canvas.width = w;
     canvas.height = h;
     ctx.drawImage(preview, 0, 0);
-    ctx.drawImage(memo, 0, 0);
+    ctx.drawImage(memoCanvas, 0, 0);
     link.href = canvas.toDataURL();
     link.setAttribute("download", "monster_collection");
     link.click();
