@@ -1,11 +1,8 @@
 @font-face { /*https://maplestory.nexon.com/Media/Font*/
-  font-family: "MaplestoryB";
-  src: url("../resources/font_MaplestoryB.ttf");
-}
-
-@font-face { /*https://maplestory.nexon.com/Media/Font*/
-  font-family: "MaplestoryL";
-  src: url("../resources/font_MaplestoryL.ttf");
+  font-family: 'MaplestoryOTFLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* 현재 선택된 검색어 */
@@ -54,7 +51,7 @@ section {
   outline: none;
   word-break: break-all;
   text-align: center;
-  font-family: "MaplestoryL";
+  font-family: "MaplestoryOTFLight";
 }
 
 input {

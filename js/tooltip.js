@@ -2,7 +2,7 @@ function drawTooltip(name, x, y, w, h) {
     const tooltip = document.getElementById("tooltip");
     const ctx = tooltip.getContext("2d");
 
-    ctx.font = "14px MaplestoryL";
+    ctx.font = "14px MaplestoryOTFLight";
     ctx.fillStyle = "#ffffff";
     ctx.textAlign = "right";
     ctx.letterSpacing = "1px";

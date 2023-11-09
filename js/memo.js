@@ -5,7 +5,7 @@ function drawMemo(value) {
     const ctx = canvas.getContext("2d");
     const memotext = value.trim();
 
-    ctx.font = "17px MaplestoryL";
+    ctx.font = "17px MaplestoryOTFLight";
     ctx.fillStyle = "#eeff00";
     ctx.textAlign = "right";
     ctx.letterSpacing = "1px";
