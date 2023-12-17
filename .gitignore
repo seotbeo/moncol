@@ -1,0 +1,12 @@
+#local test
+js/dummy
+python/temp
+python/mob
+mob/temp
+
+#others
+line.html
+js/line.js
+resources/ui_line.png
+resources/ui_one.png
+
