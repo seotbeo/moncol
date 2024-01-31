@@ -4743,7 +4743,7 @@ const dbs =
     {
         ID: 8620028,
         src: "mob/8620028.img.png",
-        name: "[*] Mutated Stump",
+        name: "[*] Transformed Stump",
         star: 2,
     },
     {
