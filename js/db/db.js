@@ -7471,9 +7471,9 @@ const dbk =
         star: 4,
     },
     {
-        ID: 8881000,
-        src: "mob/8881000.img.png",
-        name: "우르스",
+        ID: 9500650,
+        src: "mob/9500650.img.png",
+        name: "아르카누스",
         star: 4,
     },
     {
