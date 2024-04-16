@@ -1921,8 +1921,8 @@ const dbk =
         star: 1,
     },
     {
-        ID: 8950001,
-        src: "mob/8950001.img.png",
+        ID: 8881101,
+        src: "mob/8881101.img.png",
         name: "스우",
         star: 5,
     },
@@ -7603,8 +7603,8 @@ const dbk =
         star: 5,
     },
     {
-        ID: 8950109,
-        src: "mob/8950109.img.png",
+        ID: 8881103,
+        src: "mob/8881103.img.png",
         name: "루즈 컨트롤 헤븐 코어",
         star: 5,
     },
