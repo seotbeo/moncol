@@ -5691,7 +5691,7 @@ const dbs =
     {
         ID: 8220044,
         src: "mob/8220044.img.png",
-        name: "Evasive Transformative Great Flame Spirit",
+        name: "The Transformer Great Flame Spirit",
         star: 4,
     },
     {
@@ -5751,7 +5751,7 @@ const dbs =
     {
         ID: 8220045,
         src: "mob/8220045.img.png",
-        name: "Strong Undead Lef Commander",
+        name: "Strong Lef Commander",
         star: 4,
     },
     {
@@ -5811,7 +5811,7 @@ const dbs =
     {
         ID: 8220046,
         src: "mob/8220046.img.png",
-        name: "Petrifying Seal Master Wilderness Sheriff",
+        name: "Petrifying Wilderness Sheriff",
         star: 4,
     },
     {
@@ -5901,7 +5901,7 @@ const dbs =
     {
         ID: 8645300,
         src: "mob/8645300.img.png",
-        name: "Chaotic Petrifying Guardian of Odium",
+        name: "Chaotic Guardian of Odium",
         star: 4,
     },
     {
@@ -5997,7 +5997,7 @@ const dbs =
     {
         ID: 8645375,
         src: "mob/8645375.img.png",
-        name: "Strong Magic Resistance Researcher Who Forgot the Seasons",
+        name: "Magic Resistant Researcher Who Forgot the Seasons",
         star: 4,
     },
     {
@@ -6039,7 +6039,7 @@ const dbs =
     {
         ID: 8645408,
         src: "mob/8645408.img.png",
-        name: "Sturdily Sealed High Flora Leader",
+        name: "Sealing High Flora Leader",
         star: 4,
     },
     {
@@ -6105,7 +6105,7 @@ const dbs =
     {
         ID: 8645425,
         src: "mob/8645425.img.png",
-        name: "Shapeshifter Abyssal Hunter",
+        name: "Transformative Abyssal Hunter",
         star: 3,
     },
     {
@@ -6117,7 +6117,7 @@ const dbs =
     {
         ID: 8645430,
         src: "mob/8645430.img.png",
-        name: "Undead of the Black Chains Leader of the Abyss",
+        name: "Black Chains Leader of the Abyss",
         star: 4,
     },
     {
@@ -7471,9 +7471,9 @@ const dbs =
         star: 4,
     },
     {
-        ID: 8881000,
-        src: "mob/8881000.img.png",
-        name: "Ursus",
+        ID: 9500650,
+        src: "mob/9500650.img.png",
+        name: "Arcanus",
         star: 4,
     },
     {
@@ -7599,7 +7599,7 @@ const dbs =
     {
         ID: 8880725,
         src: "mob/8880725.img.png",
-        name: "Slime's Treasure Box",
+        name: "Slime's Treasure Chest",
         star: 5,
     },
     {
@@ -7635,13 +7635,13 @@ const dbs =
     {
         ID: 8950120,
         src: "mob/8950120.img.png",
-        name: "Heretic Hilla's Treasure Box",
+        name: "Heretic Hilla's Treasure Chest",
         star: 5,
     },
     {
         ID: 8950118,
         src: "mob/8950118.img.png",
-        name: "Djunkel's Treasure Box",
+        name: "Djunkel's Treasure Chest",
         star: 5,
     },
     {
@@ -7653,7 +7653,7 @@ const dbs =
     {
         ID: 8880614,
         src: "mob/8880614.img.png",
-        name: "Chosen Serene's Treasure Box",
+        name: "Chosen Serene's Treasure Chest",
         star: 5,
     },
     {
