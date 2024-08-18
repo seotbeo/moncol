@@ -2163,7 +2163,7 @@ const dbg =
     {
         ID: 6130102,
         src: "mob/6130102.img.png",
-        name: "Separated Pepe",
+        name: "Pepe",
         star: 1,
     },
     {
@@ -4479,7 +4479,7 @@ const dbg =
     {
         ID: 8620004,
         src: "mob/8620004.img.png",
-        name: "Pillaging Iron Hog",
+        name: "Iron Boar Raider",
         star: 1,
     },
     {
@@ -5691,7 +5691,7 @@ const dbg =
     {
         ID: 8220044,
         src: "mob/8220044.img.png",
-        name: "Evasive Master of Disguise Flaming Great Spirit",
+        name: "Master of Disguise Flaming Great Spirit",
         star: 4,
     },
     {
@@ -5751,7 +5751,7 @@ const dbg =
     {
         ID: 8220045,
         src: "mob/8220045.img.png",
-        name: "Beefy Undead Flora Commander",
+        name: "Beefy Flora Commander",
         star: 4,
     },
     {
@@ -5811,7 +5811,7 @@ const dbg =
     {
         ID: 8220046,
         src: "mob/8220046.img.png",
-        name: "Petrifying Seal Master Sheriff of Wastes",
+        name: "Petrifying Sheriff of Wastes",
         star: 4,
     },
     {
@@ -5901,7 +5901,7 @@ const dbg =
     {
         ID: 8645300,
         src: "mob/8645300.img.png",
-        name: "Befuddling Petrifying Odium's Guard",
+        name: "Befuddling Odium's Guard",
         star: 4,
     },
     {
@@ -5997,7 +5997,7 @@ const dbg =
     {
         ID: 8645375,
         src: "mob/8645375.img.png",
-        name: "Magic-Resistant Sticky Lost Season Researcher",
+        name: "Magic-Resistant Lost Season Researcher",
         star: 4,
     },
     {
@@ -6039,7 +6039,7 @@ const dbg =
     {
         ID: 8645408,
         src: "mob/8645408.img.png",
-        name: "Beefy Seal Master High Flora Leader",
+        name: "Seal Master High Flora Leader",
         star: 4,
     },
     {
@@ -6117,7 +6117,7 @@ const dbg =
     {
         ID: 8645430,
         src: "mob/8645430.img.png",
-        name: "Black Chains Undead Abyss Guide",
+        name: "Black Chains Abyss Guide",
         star: 4,
     },
     {
@@ -7479,7 +7479,7 @@ const dbg =
     {
         ID: 9801500,
         src: "mob/9801500.img.png",
-        name: "Mysterious Slime",
+        name: "Myst. Slime",
         star: 2,
     },
     {
@@ -7515,13 +7515,13 @@ const dbg =
     {
         ID: 9801505,
         src: "mob/9801505.img.png",
-        name: "Mysterious Viper",
+        name: "Myst. Viper",
         star: 2,
     },
     {
         ID: 9801506,
         src: "mob/9801506.img.png",
-        name: "Mysterious Sabertooth",
+        name: "Myst. Sabertooth",
         star: 2,
     },
     {
