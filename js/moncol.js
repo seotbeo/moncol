@@ -712,7 +712,7 @@ function savelist()
     const link = document.createElement("a");
     const file = new Blob([outputStr], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
-    link.setAttribute("download", (language == "kr" ? "몬스터 컬렉션_" : "Monster Collection_") + date);
+    link.setAttribute("download", (language == "kr" ? "몬스터 컬렉션_" : "Monster Collection_") + date + ".txt");
     link.click();
     URL.revokeObjectURL(link.href);
     showAlert(language == "kr" ?
