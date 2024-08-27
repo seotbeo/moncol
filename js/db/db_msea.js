@@ -1425,7 +1425,7 @@ const dbs =
     {
         ID: 2220000,
         src: "mob/2220000.img.png",
-        name: "Mano ",
+        name: "Mano",
         star: 3,
     },
     {
@@ -1921,8 +1921,8 @@ const dbs =
         star: 1,
     },
     {
-        ID: 8950001,
-        src: "mob/8950001.img.png",
+        ID: 8881101,
+        src: "mob/8881101.img.png",
         name: "Lotus",
         star: 5,
     },
@@ -2001,7 +2001,7 @@ const dbs =
     {
         ID: 6230401,
         src: "mob/6230401.img.png",
-        name: "Jr. Lucida ",
+        name: "Jr. Lucida",
         star: 1,
     },
     {
@@ -2163,7 +2163,7 @@ const dbs =
     {
         ID: 6130102,
         src: "mob/6130102.img.png",
-        name: "Separated Pepe",
+        name: "Pepe",
         star: 1,
     },
     {
@@ -3243,7 +3243,7 @@ const dbs =
     {
         ID: 8140555,
         src: "mob/8140555.img.png",
-        name: "Bombing Fish House ",
+        name: "Bombing Fish House",
         star: 1,
     },
     {
@@ -3381,7 +3381,7 @@ const dbs =
     {
         ID: 4230600,
         src: "mob/4230600.img.png",
-        name: "Desert Giant ",
+        name: "Desert Giant",
         star: 1,
     },
     {
@@ -3411,7 +3411,7 @@ const dbs =
     {
         ID: 9305422,
         src: "mob/9305422.img.png",
-        name: "Pharoah Mummy",
+        name: "Pharaoh Mummy",
         star: 1,
     },
     {
@@ -3489,7 +3489,7 @@ const dbs =
     {
         ID: 5110300,
         src: "mob/5110300.img.png",
-        name: "Reinforced Mithril Mutae ",
+        name: "Reinforced Mithril Mutae",
         star: 1,
     },
     {
@@ -3999,7 +3999,7 @@ const dbs =
     {
         ID: 8300000,
         src: "mob/8300000.img.png",
-        name: "Soaring Hawk ",
+        name: "Soaring Hawk",
         star: 1,
     },
     {
@@ -5085,7 +5085,7 @@ const dbs =
     {
         ID: 8880000,
         src: "mob/8880000.img.png",
-        name: "Hard Magnus",
+        name: "Magnus",
         star: 5,
     },
     {
@@ -5691,7 +5691,7 @@ const dbs =
     {
         ID: 8220044,
         src: "mob/8220044.img.png",
-        name: "The Transformer Great Flame Spirit",
+        name: "Transformative Great Flame Spirit",
         star: 4,
     },
     {
@@ -6039,7 +6039,7 @@ const dbs =
     {
         ID: 8645408,
         src: "mob/8645408.img.png",
-        name: "Sealing High Flora Leader",
+        name: "Seal Master High Flora Leader",
         star: 4,
     },
     {
@@ -6143,6 +6143,156 @@ const dbs =
         src: "mob/8645427.img.png",
         name: "Black Chains Priest Who Approached the Origin",
         star: 3,
+    },
+    {
+        ID: 9834341,
+        src: "mob/9834341.img.png",
+        name: "Trace of Blight",
+        star: 2,
+    },
+    {
+        ID: 9834342,
+        src: "mob/9834342.img.png",
+        name: "Ritual of Blight",
+        star: 2,
+    },
+    {
+        ID: 9834343,
+        src: "mob/9834343.img.png",
+        name: "Follower of Blight",
+        star: 2,
+    },
+    {
+        ID: 9834344,
+        src: "mob/9834344.img.png",
+        name: "Judgment of Blight",
+        star: 2,
+    },
+    {
+        ID: 9834392,
+        src: "mob/9834392.img.png",
+        name: "Scattered Blight",
+        star: 2,
+    },
+    {
+        ID: 9834367,
+        src: "mob/9834367.img.png",
+        name: "Trace of Desecration",
+        star: 2,
+    },
+    {
+        ID: 9834368,
+        src: "mob/9834368.img.png",
+        name: "Ritual of Desecration",
+        star: 2,
+    },
+    {
+        ID: 9834369,
+        src: "mob/9834369.img.png",
+        name: "Follower of Desecration",
+        star: 2,
+    },
+    {
+        ID: 9834370,
+        src: "mob/9834370.img.png",
+        name: "Judgment of Desecration",
+        star: 2,
+    },
+    {
+        ID: 9834371,
+        src: "mob/9834371.img.png",
+        name: "Wrath of Desecration",
+        star: 2,
+    },
+    {
+        ID: 9834372,
+        src: "mob/9834372.img.png",
+        name: "Trace of Terror",
+        star: 2,
+    },
+    {
+        ID: 9834373,
+        src: "mob/9834373.img.png",
+        name: "Ritual of Terror",
+        star: 2,
+    },
+    {
+        ID: 9834374,
+        src: "mob/9834374.img.png",
+        name: "Follower of Terror",
+        star: 2,
+    },
+    {
+        ID: 9834375,
+        src: "mob/9834375.img.png",
+        name: "Judgment of Terror",
+        star: 2,
+    },
+    {
+        ID: 9834376,
+        src: "mob/9834376.img.png",
+        name: "Wrath of Terror",
+        star: 2,
+    },
+    {
+        ID: 9834427,
+        src: "mob/9834427.img.png",
+        name: "Sticky Abyss",
+        star: 2,
+    },
+    {
+        ID: 9834428,
+        src: "mob/9834428.img.png",
+        name: "Sweeping Gluttony",
+        star: 2,
+    },
+    {
+        ID: 9834429,
+        src: "mob/9834429.img.png",
+        name: "Sweeping Rampage",
+        star: 2,
+    },
+    {
+        ID: 9834397,
+        src: "mob/9834397.img.png",
+        name: "Scattered Desecration",
+        star: 2,
+    },
+    {
+        ID: 9834402,
+        src: "mob/9834402.img.png",
+        name: "Scattered Terror",
+        star: 2,
+    },
+    {
+        ID: 9834406,
+        src: "mob/9834406.img.png",
+        name: "Tainus",
+        star: 5,
+    },
+    {
+        ID: 9834391,
+        src: "mob/9834391.img.png",
+        name: "Divided Tainus of Blight",
+        star: 4,
+    },
+    {
+        ID: 9834396,
+        src: "mob/9834396.img.png",
+        name: "Divided Tainus of Desecration",
+        star: 4,
+    },
+    {
+        ID: 9834401,
+        src: "mob/9834401.img.png",
+        name: "Divided Tainus of Terror",
+        star: 4,
+    },
+    {
+        ID: 9834357,
+        src: "mob/9834357.img.png",
+        name: "Tainus's Fragment",
+        star: 4,
     },
     {
         ID: 8641000,
@@ -7603,8 +7753,8 @@ const dbs =
         star: 5,
     },
     {
-        ID: 8950109,
-        src: "mob/8950109.img.png",
+        ID: 8881103,
+        src: "mob/8881103.img.png",
         name: "Lose Control Heaven Core",
         star: 5,
     },
