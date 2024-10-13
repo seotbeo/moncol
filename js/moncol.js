@@ -658,7 +658,7 @@ function setElite()
     var loadArray = new Array();
 
     for (var i = 0; i < elite.length; i++) {
-        var target = db.find(e => (e.ID == elite[i].ID) && (e.star == elite[i].star));
+        var target = db.find(e => (e.ID == elite[i].ID) && (e.star >= 3));
         if (!target) {
             target = db.find(e => ["빈칸", "空位", "空白", "Blank"].includes(e.name));
         }
