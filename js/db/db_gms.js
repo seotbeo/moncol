@@ -7755,7 +7755,7 @@ const dbg =
     {
         ID: 8881103,
         src: "mob/8881103.img.png",
-        name: "Loose Control Heaven Core",
+        name: "Lose Control Heaven Core",
         star: 5,
     },
     {

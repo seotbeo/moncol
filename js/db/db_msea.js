@@ -675,7 +675,7 @@ const dbs =
     {
         ID: 8148003,
         src: "mob/8148003.img.png",
-        name: "Lev Reokon",
+        name: "Leprechaun",
         star: 1,
     },
     {
@@ -687,7 +687,7 @@ const dbs =
     {
         ID: 8148008,
         src: "mob/8148008.img.png",
-        name: "Red Stige",
+        name: "Red Stirge",
         star: 1,
     },
     {
@@ -2343,7 +2343,7 @@ const dbs =
     {
         ID: 7130001,
         src: "mob/7130001.img.png",
-        name: "[*] Bulldog",
+        name: "[*] Cerebes",
         star: 2,
     },
     {
@@ -2481,7 +2481,7 @@ const dbs =
     {
         ID: 4230108,
         src: "mob/4230108.img.png",
-        name: "[*] Junior Bulldog",
+        name: "[*] Jr. Cerebes",
         star: 2,
     },
     {
@@ -2733,25 +2733,25 @@ const dbs =
     {
         ID: 7140000,
         src: "mob/7140000.img.png",
-        name: "[*] Pirate",
+        name: "[*] Ghost Pirate",
         star: 2,
     },
     {
         ID: 7160000,
         src: "mob/7160000.img.png",
-        name: "Fragile [*] Dual Pirate",
+        name: "Fragile [*] Dual Ghost Pirate",
         star: 3,
     },
     {
         ID: 8141000,
         src: "mob/8141000.img.png",
-        name: "[*] Viking",
+        name: "[*] Spirit Viking",
         star: 2,
     },
     {
         ID: 8141100,
         src: "mob/8141100.img.png",
-        name: "[*] Gigantic Viking",
+        name: "[*] Gigantic Spirit Viking",
         star: 2,
     },
     {
@@ -2763,7 +2763,7 @@ const dbs =
     {
         ID: 8143000,
         src: "mob/8143000.img.png",
-        name: "[*] G. Phantom Watch",
+        name: "[*] Grim Phantom Watch",
         star: 2,
     },
     {
