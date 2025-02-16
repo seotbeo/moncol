@@ -2071,8 +2071,8 @@ const dbk =
         star: 1,
     },
     {
-        ID: 4230105,
-        src: "mob/4230105.img.png",
+        ID: 4230122,
+        src: "mob/4230122.img.png",
         name: "네펜데스",
         star: 1,
     },
