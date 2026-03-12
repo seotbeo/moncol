@@ -285,7 +285,7 @@ const dbs =
     {
         ID: 3501005,
         src: "mob/3501005.img.png",
-        name: "Healer High-class Magic Book",
+        name: "Regenerating High-class Magic Book",
         star: 3,
     },
     {
@@ -1065,7 +1065,7 @@ const dbs =
     {
         ID: 2300266,
         src: "mob/2300266.img.png",
-        name: "Gassy Dangerous Ruins Offender B",
+        name: "Poisoning Dangerous Ruins Offender B",
         star: 3,
     },
     {
@@ -1779,7 +1779,7 @@ const dbs =
     {
         ID: 8105002,
         src: "mob/8105002.img.png",
-        name: "Poisonous Enhanced Security System",
+        name: "Deadly Poisonous Enhanced Security System",
         star: 3,
     },
     {
@@ -1905,7 +1905,7 @@ const dbs =
     {
         ID: 8250023,
         src: "mob/8250023.img.png",
-        name: "Knock Out Steel Generoid B",
+        name: "Stunning Steel Generoid B",
         star: 3,
     },
     {
@@ -2071,8 +2071,8 @@ const dbs =
         star: 1,
     },
     {
-        ID: 4230105,
-        src: "mob/4230105.img.png",
+        ID: 4230122,
+        src: "mob/4230122.img.png",
         name: "Nependeath",
         star: 1,
     },
@@ -2161,8 +2161,8 @@ const dbs =
         star: 1,
     },
     {
-        ID: 6130102,
-        src: "mob/6130102.img.png",
+        ID: 6130103,
+        src: "mob/6130103.img.png",
         name: "Pepe",
         star: 1,
     },
@@ -2283,7 +2283,7 @@ const dbs =
     {
         ID: 8210005,
         src: "mob/8210005.img.png",
-        name: "Seal Master Castle Golem",
+        name: "Sealing Castle Golem",
         star: 3,
     },
     {
@@ -2331,7 +2331,7 @@ const dbs =
     {
         ID: 5130107,
         src: "mob/5130107.img.png",
-        name: "Gassy Coolie Zombie",
+        name: "Poisoning Coolie Zombie",
         star: 3,
     },
     {
@@ -2589,7 +2589,7 @@ const dbs =
     {
         ID: 4230109,
         src: "mob/4230109.img.png",
-        name: "Poisonous Block Golem",
+        name: "Deadly Poisonous Block Golem",
         star: 3,
     },
     {
@@ -3279,7 +3279,7 @@ const dbs =
     {
         ID: 8150101,
         src: "mob/8150101.img.png",
-        name: "Healer Cold Shark",
+        name: "Regenerating Cold Shark",
         star: 3,
     },
     {
@@ -3459,7 +3459,7 @@ const dbs =
     {
         ID: 3110303,
         src: "mob/3110303.img.png",
-        name: "Healer Triple Rumo",
+        name: "Regenerating Triple Rumo",
         star: 3,
     },
     {
@@ -3507,7 +3507,7 @@ const dbs =
     {
         ID: 8110300,
         src: "mob/8110300.img.png",
-        name: "Gassy Homunscullo",
+        name: "Poisoning Homunscullo",
         star: 3,
     },
     {
@@ -3519,7 +3519,7 @@ const dbs =
     {
         ID: 5110302,
         src: "mob/5110302.img.png",
-        name: "Seal Master Neo Huroid",
+        name: "Sealing Neo Huroid",
         star: 3,
     },
     {
@@ -4239,7 +4239,7 @@ const dbs =
     {
         ID: 8147006,
         src: "mob/8147006.img.png",
-        name: "Poisonous Poison Hornet",
+        name: "Deadly Poisonous Poison Hornet",
         star: 3,
     },
     {
@@ -4277,6 +4277,174 @@ const dbs =
         src: "mob/8800400.img.png",
         name: "Tarantulos",
         star: 4,
+    },
+    {
+        ID: 8881533,
+        src: "mob/8881533.img.png",
+        name: "Demon Fighter",
+        star: 2,
+    },
+    {
+        ID: 8881534,
+        src: "mob/8881534.img.png",
+        name: "Demon Warrior",
+        star: 2,
+    },
+    {
+        ID: 8881535,
+        src: "mob/8881535.img.png",
+        name: "High Demon Warrior",
+        star: 2,
+    },
+    {
+        ID: 8881549,
+        src: "mob/8881549.img.png",
+        name: "Test Subject A",
+        star: 2,
+    },
+    {
+        ID: 8881550,
+        src: "mob/8881550.img.png",
+        name: "Test Subject B",
+        star: 2,
+    },
+    {
+        ID: 8881551,
+        src: "mob/8881551.img.png",
+        name: "Test Subject C",
+        star: 2,
+    },
+    {
+        ID: 8881541,
+        src: "mob/8881541.img.png",
+        name: "Demon Lackey",
+        star: 2,
+    },
+    {
+        ID: 8881542,
+        src: "mob/8881542.img.png",
+        name: "Demon Soldier",
+        star: 2,
+    },
+    {
+        ID: 8881543,
+        src: "mob/8881543.img.png",
+        name: "Demon Reaper",
+        star: 2,
+    },
+    {
+        ID: 8881536,
+        src: "mob/8881536.img.png",
+        name: "Berserker Demon Warrior",
+        star: 2,
+    },
+    {
+        ID: 8881552,
+        src: "mob/8881552.img.png",
+        name: "Perfected Test Subject",
+        star: 2,
+    },
+    {
+        ID: 8881544,
+        src: "mob/8881544.img.png",
+        name: "Demon Vanguard",
+        star: 2,
+    },
+    {
+        ID: 8881500,
+        src: "mob/8881500.img.png",
+        name: "Friendly Azrael",
+        star: 4,
+    },
+    {
+        ID: 8881510,
+        src: "mob/8881510.img.png",
+        name: "Destructive Infernus",
+        star: 4,
+    },
+    {
+        ID: 8881520,
+        src: "mob/8881520.img.png",
+        name: "Aiden",
+        star: 4,
+    },
+    {
+        ID: 8881537,
+        src: "mob/8881537.img.png",
+        name: "Elite Demon Fighter",
+        star: 2,
+    },
+    {
+        ID: 8881538,
+        src: "mob/8881538.img.png",
+        name: "Elite Demon Warrior",
+        star: 2,
+    },
+    {
+        ID: 8881539,
+        src: "mob/8881539.img.png",
+        name: "Elite High Demon Warrior",
+        star: 2,
+    },
+    {
+        ID: 8881553,
+        src: "mob/8881553.img.png",
+        name: "Elite Test Subject A",
+        star: 2,
+    },
+    {
+        ID: 8881554,
+        src: "mob/8881554.img.png",
+        name: "Elite Test Subject B",
+        star: 2,
+    },
+    {
+        ID: 8881555,
+        src: "mob/8881555.img.png",
+        name: "Elite Test Subject C",
+        star: 2,
+    },
+    {
+        ID: 8881545,
+        src: "mob/8881545.img.png",
+        name: "Elite Demon Lackey",
+        star: 2,
+    },
+    {
+        ID: 8881546,
+        src: "mob/8881546.img.png",
+        name: "Elite Demon Soldier",
+        star: 2,
+    },
+    {
+        ID: 8881547,
+        src: "mob/8881547.img.png",
+        name: "Elite Demon Reaper",
+        star: 2,
+    },
+    {
+        ID: 8881540,
+        src: "mob/8881540.img.png",
+        name: "Elite Berserker Demon Warrior",
+        star: 2,
+    },
+    {
+        ID: 8881556,
+        src: "mob/8881556.img.png",
+        name: "Elite Perfected Test Subject",
+        star: 2,
+    },
+    {
+        ID: 8881548,
+        src: "mob/8881548.img.png",
+        name: "Elite Demon Vanguard",
+        star: 2,
+    },
+    {
+        ID: 8881557,
+        src: "mob/8881557.img.png",
+        name: "Gold Eater",
+        star: 5,
     },
     {
         ID: 8200001,
@@ -4329,7 +4497,7 @@ const dbs =
     {
         ID: 8200008,
         src: "mob/8200008.img.png",
-        name: "Knock Out Chief Qualm Guardian",
+        name: "Stunning Chief Qualm Guardian",
         star: 3,
     },
     {
@@ -4479,7 +4647,7 @@ const dbs =
     {
         ID: 8620004,
         src: "mob/8620004.img.png",
-        name: "Transformed Iron Boar",
+        name: "Transformed Iron Hog",
         star: 1,
     },
     {
@@ -4521,7 +4689,7 @@ const dbs =
     {
         ID: 8620011,
         src: "mob/8620011.img.png",
-        name: "Seal Master Ancient Mixed Golem",
+        name: "Sealing Ancient Mixed Golem",
         star: 3,
     },
     {
@@ -4701,13 +4869,13 @@ const dbs =
     {
         ID: 8220041,
         src: "mob/8220041.img.png",
-        name: "[*] Oblivion Guard",
+        name: "[*] Oblivion Guardian",
         star: 1,
     },
     {
         ID: 8220042,
         src: "mob/8220042.img.png",
-        name: "[*] Guardian Captain of Oblivion",
+        name: "[*] Chief Oblivion Guardian",
         star: 1,
     },
     {
@@ -5349,7 +5517,7 @@ const dbs =
     {
         ID: 2400255,
         src: "mob/2400255.img.png",
-        name: "Gassy Puffy Squirrel",
+        name: "Poisoning Puffy Squirrel",
         star: 3,
     },
     {
@@ -6039,7 +6207,7 @@ const dbs =
     {
         ID: 8645408,
         src: "mob/8645408.img.png",
-        name: "Seal Master High Flora Leader",
+        name: "Sealing High Flora Leader",
         star: 3,
     },
     {
@@ -6535,6 +6703,126 @@ const dbs =
         star: 5,
     },
     {
+        ID: 8645378,
+        src: "mob/8645378.img.png",
+        name: "Mountain Herb",
+        star: 1,
+    },
+    {
+        ID: 8645379,
+        src: "mob/8645379.img.png",
+        name: "Heart of Mountain Herb",
+        star: 1,
+    },
+    {
+        ID: 8645380,
+        src: "mob/8645380.img.png",
+        name: "Troublemaker Sandpiper",
+        star: 1,
+    },
+    {
+        ID: 8645381,
+        src: "mob/8645381.img.png",
+        name: "Bad-tempered Sandpiper",
+        star: 1,
+    },
+    {
+        ID: 9834620,
+        src: "mob/9834620.img.png",
+        name: "Polluted Toad",
+        star: 2,
+    },
+    {
+        ID: 9834621,
+        src: "mob/9834621.img.png",
+        name: "Polluted Snake",
+        star: 2,
+    },
+    {
+        ID: 9834622,
+        src: "mob/9834622.img.png",
+        name: "Polluted Bear",
+        star: 2,
+    },
+    {
+        ID: 9834637,
+        src: "mob/9834637.img.png",
+        name: "Polluted Lantern",
+        star: 2,
+    },
+    {
+        ID: 9834626,
+        src: "mob/9834626.img.png",
+        name: "Polluted Wolf",
+        star: 4,
+    },
+    {
+        ID: 9834623,
+        src: "mob/9834623.img.png",
+        name: "Polluted Sinsung",
+        star: 4,
+    },
+    {
+        ID: 9834630,
+        src: "mob/9834630.img.png",
+        name: "Polluted Ara",
+        star: 4,
+    },
+    {
+        ID: 9834635,
+        src: "mob/9834635.img.png",
+        name: "Polluted Jagang",
+        star: 5,
+    },
+    {
+        ID: 8881700,
+        src: "mob/8881700.img.png",
+        name: "Adversary's Courage",
+        star: 5,
+    },
+    {
+        ID: 8881705,
+        src: "mob/8881705.img.png",
+        name: "Adversary's Beliefs",
+        star: 5,
+    },
+    {
+        ID: 8881710,
+        src: "mob/8881710.img.png",
+        name: "The First Adversary",
+        star: 5,
+    },
+    {
+        ID: 8881603,
+        src: "mob/8881603.img.png",
+        name: "Baldrix's Henchman",
+        star: 5,
+    },
+    {
+        ID: 8881605,
+        src: "mob/8881605.img.png",
+        name: "Ancient God's Soul",
+        star: 5,
+    },
+    {
+        ID: 8881651,
+        src: "mob/8881651.img.png",
+        name: "Baldrix",
+        star: 5,
+    },
+    {
+        ID: 8881614,
+        src: "mob/8881614.img.png",
+        name: "Mana-absorbing Baldrix",
+        star: 5,
+    },
+    {
+        ID: 8881621,
+        src: "mob/8881621.img.png",
+        name: "Fully Armed Baldrix",
+        star: 5,
+    },
+    {
         ID: 8641000,
         src: "mob/8641000.img.png",
         name: "Joyful Erdas",
@@ -6645,7 +6933,7 @@ const dbs =
     {
         ID: 8642007,
         src: "mob/8642007.img.png",
-        name: "Poisonous Ripe Wolfroot",
+        name: "Deadly Poisonous Ripe Wolfroot",
         star: 3,
     },
     {
@@ -6807,7 +7095,7 @@ const dbs =
     {
         ID: 8644002,
         src: "mob/8644002.img.png",
-        name: "Earth Spirit",
+        name: "Spirit of Earth",
         star: 2,
     },
     {
@@ -6915,7 +7203,7 @@ const dbs =
     {
         ID: 8644410,
         src: "mob/8644410.img.png",
-        name: "Seal Master Hammerer, Caught in Ritual",
+        name: "Sealing Hammerer, Caught in Ritual",
         star: 3,
     },
     {
@@ -6987,7 +7275,7 @@ const dbs =
     {
         ID: 8644509,
         src: "mob/8644509.img.png",
-        name: "Knock Out Dark Executor",
+        name: "Stunning Dark Executor",
         star: 3,
     },
     {
@@ -7299,7 +7587,7 @@ const dbs =
     {
         ID: 8642063,
         src: "mob/8642063.img.png",
-        name: "Healer Powerful Stonpy",
+        name: "Regenerating Powerful Stonpy",
         star: 3,
     },
     {
@@ -7563,13 +7851,13 @@ const dbs =
     {
         ID: 8220025,
         src: "mob/8220025.img.png",
-        name: "Healer Strong Headhunter July",
+        name: "Regenerating Strong Headhunter July",
         star: 3,
     },
     {
         ID: 8220026,
         src: "mob/8220026.img.png",
-        name: "Seal Master Undead Fighter Plaid",
+        name: "Sealed Undead Fighter Plaid",
         star: 3,
     },
     {
@@ -7681,20 +7969,20 @@ const dbs =
         star: 1,
     },
     {
-        ID: 2700303,
-        src: "mob/2700303.img.png",
+        ID: 2700021,
+        src: "mob/2700021.img.png",
         name: "Shooting Dust",
         star: 1,
     },
     {
-        ID: 2700304,
-        src: "mob/2700304.img.png",
+        ID: 2700022,
+        src: "mob/2700022.img.png",
         name: "Flying Dust",
         star: 1,
     },
     {
-        ID: 2700305,
-        src: "mob/2700305.img.png",
+        ID: 2700023,
+        src: "mob/2700023.img.png",
         name: "Rolling Dust",
         star: 1,
     },
@@ -8059,6 +8347,132 @@ const dbs =
         star: 5,
     },
     {
+        ID: 8881715,
+        src: "mob/8881715.img.png",
+        name: "Heart of the World",
+        star: 5,
+    },
+    {
+        ID: 8881334,
+        src: "mob/8881334.img.png",
+        name: "Paradoxical Truth",
+        star: 5,
+    },
+    {
+        ID: 8881624,
+        src: "mob/8881624.img.png",
+        name: "Pure Mana Cluster",
+        star: 5,
+    },
+    {
+        ID: 9834538,
+        src: "mob/9834538.img.png",
+        name: "Jade Warrior",
+        star: 2,
+    },
+    {
+        ID: 9834539,
+        src: "mob/9834539.img.png",
+        name: "Jade Vanguard",
+        star: 2,
+    },
+    {
+        ID: 9834547,
+        src: "mob/9834547.img.png",
+        name: "Jade Brutal",
+        star: 2,
+    },
+    {
+        ID: 9834548,
+        src: "mob/9834548.img.png",
+        name: "Jade Bulwark",
+        star: 2,
+    },
+    {
+        ID: 9834540,
+        src: "mob/9834540.img.png",
+        name: "Jade Warmaster",
+        star: 4,
+    },
+    {
+        ID: 9834541,
+        src: "mob/9834541.img.png",
+        name: "Azure Warrior",
+        star: 2,
+    },
+    {
+        ID: 9834542,
+        src: "mob/9834542.img.png",
+        name: "Azure Vanguard",
+        star: 2,
+    },
+    {
+        ID: 9834550,
+        src: "mob/9834550.img.png",
+        name: "Azure Brutal",
+        star: 2,
+    },
+    {
+        ID: 9834551,
+        src: "mob/9834551.img.png",
+        name: "Azure Bulwark",
+        star: 2,
+    },
+    {
+        ID: 9834543,
+        src: "mob/9834543.img.png",
+        name: "Azure Warmaster",
+        star: 4,
+    },
+    {
+        ID: 9834544,
+        src: "mob/9834544.img.png",
+        name: "Scarlet Warrior",
+        star: 2,
+    },
+    {
+        ID: 9834545,
+        src: "mob/9834545.img.png",
+        name: "Scarlet Vanguard",
+        star: 2,
+    },
+    {
+        ID: 9834553,
+        src: "mob/9834553.img.png",
+        name: "Scarlet Brutal",
+        star: 2,
+    },
+    {
+        ID: 9834554,
+        src: "mob/9834554.img.png",
+        name: "Scarlet Bulwark",
+        star: 2,
+    },
+    {
+        ID: 9834546,
+        src: "mob/9834546.img.png",
+        name: "Scarlet Warmaster",
+        star: 4,
+    },
+    {
+        ID: 9834549,
+        src: "mob/9834549.img.png",
+        name: "Jade Warlord",
+        star: 4,
+    },
+    {
+        ID: 9834552,
+        src: "mob/9834552.img.png",
+        name: "Azure Warlord",
+        star: 4,
+    },
+    {
+        ID: 9834555,
+        src: "mob/9834555.img.png",
+        name: "Scarlet Warlord",
+        star: 5,
+    },
+    {
         ID: 9010136,
         src: "mob/9010136.img.png",
         name: "Midsummer GM Balloon",
@@ -8232,6 +8646,216 @@ const dbs =
         name: "Midsummer Octopus",
         star: 3,
         isBeyondEventMob: true,
+    },
+    {
+        ID: 9601650,
+        src: "mob/9601650.img.png",
+        name: "Test Mechanical Soldier",
+        star: 1,
+    },
+    {
+        ID: 9601651,
+        src: "mob/9601651.img.png",
+        name: "Test Mechanical Ninja",
+        star: 1,
+    },
+    {
+        ID: 9601652,
+        src: "mob/9601652.img.png",
+        name: "Test Mechanical Artilleryman",
+        star: 1,
+    },
+    {
+        ID: 9400025,
+        src: "mob/9400025.img.png",
+        name: "Dark Night Samurai",
+        star: 2,
+    },
+    {
+        ID: 9400028,
+        src: "mob/9400028.img.png",
+        name: "Cherry Blossom Mushroom",
+        star: 1,
+    },
+    {
+        ID: 9400029,
+        src: "mob/9400029.img.png",
+        name: "Wandering Fire Raccoon",
+        star: 1,
+    },
+    {
+        ID: 9400016,
+        src: "mob/9400016.img.png",
+        name: "Field Fox",
+        star: 1,
+    },
+    {
+        ID: 9400030,
+        src: "mob/9400030.img.png",
+        name: "Crow",
+        star: 1,
+    },
+    {
+        ID: 9400017,
+        src: "mob/9400017.img.png",
+        name: "Night Fox",
+        star: 1,
+    },
+    {
+        ID: 9400005,
+        src: "mob/9400005.img.png",
+        name: "Red Boogie",
+        star: 1,
+    },
+    {
+        ID: 9400006,
+        src: "mob/9400006.img.png",
+        name: "Blue Boogie",
+        star: 1,
+    },
+    {
+        ID: 9400007,
+        src: "mob/9400007.img.png",
+        name: "Green Boogie",
+        star: 1,
+    },
+    {
+        ID: 9400008,
+        src: "mob/9400008.img.png",
+        name: "Black Boogie",
+        star: 1,
+    },
+    {
+        ID: 9400022,
+        src: "mob/9400022.img.png",
+        name: "Dark Specter",
+        star: 1,
+    },
+    {
+        ID: 9400020,
+        src: "mob/9400020.img.png",
+        name: "Kappa",
+        star: 1,
+    },
+    {
+        ID: 9400021,
+        src: "mob/9400021.img.png",
+        name: "Paper Lantern Ghost",
+        star: 1,
+    },
+    {
+        ID: 9400023,
+        src: "mob/9400023.img.png",
+        name: "Sleepy Ghost",
+        star: 1,
+    },
+    {
+        ID: 9400019,
+        src: "mob/9400019.img.png",
+        name: "Tengu's Shadow",
+        star: 2,
+    },
+    {
+        ID: 9400100,
+        src: "mob/9400100.img.png",
+        name: "Extra A",
+        star: 1,
+    },
+    {
+        ID: 9400101,
+        src: "mob/9400101.img.png",
+        name: "Extra B",
+        star: 1,
+    },
+    {
+        ID: 9400102,
+        src: "mob/9400102.img.png",
+        name: "Extra C",
+        star: 1,
+    },
+    {
+        ID: 9400103,
+        src: "mob/9400103.img.png",
+        name: "Extra D",
+        star: 1,
+    },
+    {
+        ID: 9400110,
+        src: "mob/9400110.img.png",
+        name: "Leader A",
+        star: 1,
+    },
+    {
+        ID: 9400111,
+        src: "mob/9400111.img.png",
+        name: "Leader B",
+        star: 1,
+    },
+    {
+        ID: 9400015,
+        src: "mob/9400015.img.png",
+        name: "Black Snake",
+        star: 1,
+    },
+    {
+        ID: 9400121,
+        src: "mob/9400121.img.png",
+        name: "Female Boss",
+        star: 2,
+    },
+    {
+        ID: 9400122,
+        src: "mob/9400122.img.png",
+        name: "Male Boss",
+        star: 2,
+    },
+    {
+        ID: 9400300,
+        src: "mob/9400300.img.png",
+        name: "The Boss",
+        star: 6,
+    },
+    {
+        ID: 9400400,
+        src: "mob/9400400.img.png",
+        name: "Genin",
+        star: 1,
+    },
+    {
+        ID: 9400401,
+        src: "mob/9400401.img.png",
+        name: "Chunin",
+        star: 1,
+    },
+    {
+        ID: 9400402,
+        src: "mob/9400402.img.png",
+        name: "Jonin",
+        star: 1,
+    },
+    {
+        ID: 9400406,
+        src: "mob/9400406.img.png",
+        name: "Kunoichi",
+        star: 1,
+    },
+    {
+        ID: 9400407,
+        src: "mob/9400407.img.png",
+        name: "Toad",
+        star: 1,
+    },
+    {
+        ID: 9400408,
+        src: "mob/9400408.img.png",
+        name: "Castellan",
+        star: 2,
+    },
+    {
+        ID: 9400409,
+        src: "mob/9400409.img.png",
+        name: "Castellan Toad",
+        star: 6,
     },
     {
         ID: 9100049,
